@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+$roboto: 'Roboto', sans-serif;
+$arial: 'Arial', sans-serif;
+
+$light: #f5f5f5;
+$light-grey: #eee;
+$grey: #555;
+
+
+* {
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+body {
+    font: 0.9em $roboto;
+    color: $grey;    
+}
+button, input {
+    border: none;
+    background-color: transparent;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+    font:  500 1em $roboto;
+}
+svg {
+    margin: 10px 20px;
+}
+
+.header {
+    padding: 10px;
+    max-width: 1680px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    &-left {
+        display: flex;
+    }
+}
+.logo {
+    height: 44px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5em;
+    &-img {
+        width: 44px;
+        height: 40px;
+        margin: 0px 10px;
+    }
+    &-span {
+        height: 24px;        
+    }
+}
+.search {
+    max-width: 722px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light;
+    border-radius: 5px;
+    margin: 0px 120px;
+    &-btn {
+        width: 50px;
+        height: 46px;
+    }    
+    &-input {
+        width: 587px;
+        height: 46px;
+        font: 1.2em $roboto;
+    }
+}
+.nav-tools {
+    margin: 0px 50px;
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+}
+
+.main-container {
+    display: flex;
+}
+.aside {
+    width: 248px;
+    padding: 10px;
+    &-btn {
+        width: 150px;
+        height: 50px;
+        border: 1px solid $light-grey;
+        border-radius: 30px;
+        box-shadow: 0px 2px  0px 0 rgba(0, 0, 0, 0.253);
+    }
+    &__list {
+        margin: 10px 0px;
+    }
+    &__item {
+        font-size: 0.9em;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+.content {
+    display: table;
+    padding: 10px;
+    width: calc(100% - 248px);
+}
+
+.folder {
+    float: left;
+    width: 240px;
+    height: 150px;
+    border: 1px solid #d1d1d1;
+
+    &__header {
+        padding: 20px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        & input {
+            width: 100%;
+            border: 0;
+            outline: none;
+            font-size: 16px;
+            height: 20px;
+            line-height: 20px;
+            border-bottom: 1px solid #d1d1d1;
+       
+        }
+    }
+
+    &__controlls {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        & button {
+            background: lightblue;
+            padding: 10px;
+            color: #ffffff;
+            border-radius: 4px;
+        }
+    }
+}
+
