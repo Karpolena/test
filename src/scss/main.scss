@@ -4,8 +4,8 @@ $arial: 'Arial', sans-serif;
 
 $light: #f5f5f5;
 $light-grey: #eee;
-$grey: #555;
-
+$grey: #666;
+$blue: rgb(66, 131, 252);
 
 * {
 margin: 0px;
@@ -78,12 +78,22 @@ svg {
         height: 46px;
         font: 1.2em $roboto;
     }
+    &__icon {
+        margin-right:  10px;
+        color: $grey;
+        font-size: 1.4em;
+    }
 }
 .nav-tools {
     margin: 0px 50px;
     display: flex;
     width: 80px;
     justify-content: space-between;
+    &__icon {
+        margin-right:  10px;
+        color: $grey;
+        font-size: 1.4em;
+    }
 }
 
 .main-container {
@@ -100,13 +110,23 @@ svg {
         box-shadow: 0px 2px  0px 0 rgba(0, 0, 0, 0.253);
     }
     &__list {
-        margin: 10px 0px;
+        padding: 20px;
     }
     &__item {
         font-size: 0.9em;
         display: flex;
         align-items: center;
+        padding: 10px 0px;
     }
+    &__icon {
+        margin-right:  10px;
+        color: $grey;
+        font-size: 1.4em; 
+        &:hover {
+            color: $blue;
+        }
+    }
+    
 
 }
 
