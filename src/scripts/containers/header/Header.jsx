@@ -10,7 +10,7 @@ const Header = () => {
                 </a>
                 <form className="search">
                     <button className="search-btn zoom">
-                        <i className="search__icon fas fa-search"></i>
+                        <i className="icon fas fa-search"></i>
                     </button>
                     <input 
                         className="search-input"
@@ -18,7 +18,7 @@ const Header = () => {
                         placeholder="Поиск на Диске"
                     />
                     <button className="search-btn triangle" type="submit">
-                        <i className="search__icon fas fa-caret-down"></i>
+                        <i className="icon fas fa-caret-down"></i>
                     </button>
                 </form>
             </div>
@@ -26,12 +26,12 @@ const Header = () => {
                 <ul className="nav-tools">
                     <li title="Справка">
                         <button className="nav-tools__btn">
-                            <i className="nav-tools__icon far fa-question-circle"></i>
+                            <i className="icon far fa-question-circle"></i>
                         </button>
                     </li>
                     <li title="Настройки">
                         <button className="nav-tools__btn">
-                            <i className="nav-tools__icon fas fa-cog"></i>
+                            <i className="icon fas fa-cog"></i>
                         </button>
                     </li>
                 </ul>
