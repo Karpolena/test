@@ -1,11 +1,11 @@
 import { FOLDER } from "../constants/Folder";
 
-export const addFolder = (folder) => {
-    return {
-        type: FOLDER.ADD_FOLDER,
-        payload: folder
-    }
-}
+// export const saveFolder = (folder) => {
+//     return {
+//         type: FOLDER.SAVE_FOLDER,
+//         payload: folder
+//     }
+// }
 
 export const removeFolder = (id) => {
     return {
@@ -20,16 +20,3 @@ export const openInnerFolder = () => {
     }
 }
 
-export const setFolders = (folders) => {
-    return {
-        type: FOLDER.SET_FOLDERS,
-        payload: folders
-    }
-}
-
-export const setFolderId = (folder) => {
-    return {
-        type: FOLDER.SET_FOLDER_ID,
-        payload: folder
-    }
-}

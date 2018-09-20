@@ -32,3 +32,18 @@ export const getFolders = () => {
             })
     }
 }
+export const getFolderId = (id) => {
+    return dispatch => {
+        axios.get("https://test-17409.firebaseio.com/folders.json")
+            .then(response => {
+                let folder = response.data.find(fld => fld.id.toString() === id );
+                if(folder)
+                dispatch(setFolderId(folder));
+            })
+            .catch(error => {
+                dispatch(fetchFolderFailed())
+            })
+    }
+}
+
+

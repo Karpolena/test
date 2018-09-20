@@ -32,3 +32,30 @@ export const getFiles = () => {
             })
     }
 }
+
+export const getFileId = (id) => {
+    return dispatch => {
+        axios.get("https://test-17409.firebaseio.com/files.json")
+        .then(response => {
+            let file = response.data.find(fl => fl.id.toString() === id);
+            if (file) 
+                dispatch(setFileId(file));
+        })
+        .catch(error => {
+            dispatch(fetchFileFailed())
+        })
+    }
+}
+export const getFolderId = (id) => {
+    return dispatch => {
+        axios.get("https://test-17409.firebaseio.com/folders.json")
+            .then(response => {
+                let folder = response.data.find(fld => fld.id.toString() === id );
+                if(folder)
+                dispatch(setFolderId(folder));
+            })
+            .catch(error => {
+                dispatch(fetchFolderFailed())
+            })
+    }
+}

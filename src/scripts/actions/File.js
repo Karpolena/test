@@ -1,11 +1,11 @@
 import { FILE } from "../constants/File";
 
-export const addFile = (file) => {
-    return {
-        type: FILE.ADD_FILE,
-        payload: file
-    }
-}
+// export const saveFile = (file) => {
+//     return {
+//         type: FILE.SAVE_FILE,
+//         payload: file
+//     }
+// }
 
 export const removeFile = (id) => {
     return {
