@@ -1,4 +1,4 @@
-export default [
+export const data = [
     {
         id: "folder_1",
         title: "folder_1",

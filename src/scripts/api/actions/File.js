@@ -1,61 +1,44 @@
-import { FILE } from "../../constants/File";
+// import * as FileActions from "../../actions/File";
+
+// export const getFiles = () => {
+//     return dispatch => {
+//         axios.get("https://test-17409.firebaseio.com/files.json")
+//             .then(response => {
+//                 dispatch(FileActions.setFiles(response.data));
+//             })
+//             .catch(error => {
+//                 dispatch(FileActions.fetchFileFailed())
+//             })
+//     }
+// }
+
+// export const getFileId = (id) => {
+//     return dispatch => {
+//         axios.get("https://test-17409.firebaseio.com/files.json")
+//         .then(response => {
+//             let file = response.data.find(fl => fl.id.toString() === id);
+//             if (file) 
+//                 dispatch(FileActions.setFileId(file));
+//         })
+//         .catch(error => {
+//             dispatch(FileActions.fetchFileFailed())
+//         })
+//     }
+// }
 
 
-export const setFiles = (files) => {
-    return {
-        type: FILE.SET_FILES,
-        payload: files
-    }
-}
-
-export const setFileId = (file) => {
-    return {
-        type: FILE.SET_FILE_ID,
-        payload: file
-    }
-}
-
-export const fetchFileFailed = () => {
-    return {
-        type: FILE.FETCH_FILE_FAILED
-    }    
-}
+import {data} from "../data/fileData";
 
 export const getFiles = () => {
-    return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/files.json")
-            .then(response => {
-                dispatch(setFiles(response.data));
-            })
-            .catch(error => {
-                dispatch(fetchFileFailed())
-            })
-    }
-}
+     return new Promise((resolve) => {
+         resolve(data);
+     });
+ }
 
 export const getFileId = (id) => {
-    return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/files.json")
-        .then(response => {
-            let file = response.data.find(fl => fl.id.toString() === id);
-            if (file) 
-                dispatch(setFileId(file));
-        })
-        .catch(error => {
-            dispatch(fetchFileFailed())
-        })
-    }
-}
-export const getFolderId = (id) => {
-    return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/folders.json")
-            .then(response => {
-                let folder = response.data.find(fld => fld.id.toString() === id );
-                if(folder)
-                dispatch(setFolderId(folder));
-            })
-            .catch(error => {
-                dispatch(fetchFolderFailed())
-            })
-    }
+    return new Promise((resolve, reject) => {
+         let file = data.find(fl => fl.id.toString() === id);
+         if(file) return resolve(file);
+         reject("File not found");
+     });
 }

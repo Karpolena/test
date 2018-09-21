@@ -7,7 +7,7 @@ import InnerModal from "../../components/InnerModal";
 const Modal = () => {      
     return (
         <div  >
-            <Back show className="back">            
+            <Back show={false} className="back">            
                 <InnerModal />
             </Back>
         </div>

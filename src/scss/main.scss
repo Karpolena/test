@@ -38,10 +38,13 @@ button {
 svg {
     margin: 10px 20px;
 }
+.main {
+    max-width: 1200px;
+    height: 100%;
+}
 
 .header {
     padding: 10px;
-    max-width: 1680px;
     height: 64px;
     display: flex;
     justify-content: space-between;
@@ -204,8 +207,16 @@ svg {
 }
 
 .Card {
-    width: 300px;
-    height: 300px;
-   
+    width: 200px;
+    height: 200px; 
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
 }
+.home {
+    display: flex;
+}
+
+
 

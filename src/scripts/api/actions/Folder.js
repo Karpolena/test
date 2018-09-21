@@ -1,49 +1,45 @@
-import { FOLDER } from "../../constants/Folder";
+// import FolderActions from "../../actions/File";
 
 
-export const setFolders = (folders) => {
-    return {
-        type: FOLDER.SET_FOLDERS,
-        payload: folders
-    }
-}
+// export const getFolders = () => {
+//     return dispatch => {
+//         axios.get("https://test-17409.firebaseio.com/folders.json")
+//             .then(response => {
+//                 dispatch(FolderActions.setFolders(response.data));
+//             })
+//             .catch(error => {
+//                 dispatch(FolderActions.fetchFolderFailed())
+//             })
+//     }
+// }
+// export const getFolderId = (id) => {
+//     return dispatch => {
+//         axios.get("https://test-17409.firebaseio.com/folders.json")
+//             .then(response => {
+//                 let folder = response.data.find(fld => fld.id.toString() === id );
+//                 if(folder)
+//                 dispatch(FolderActions.setFolderId(folder));
+//             })
+//             .catch(error => {
+//                 dispatch(FolderActions.fetchFolderFailed())
+//             })
+//     }
+// }
 
-export const setFolderId = (folder) => {
-    return {
-        type: FOLDER.SET_FOLDER_ID,
-        payload: folder
-    }
-}
-
-export const fetchFolderFailed = () => {
-    return {
-        type: FOLDER.FETCH_FOLDER_FAILED
-    }    
-}
+import {data} from "../data/folderData";
 
 export const getFolders = () => {
-    return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/folders.json")
-            .then(response => {
-                dispatch(setFolders(response.data));
-            })
-            .catch(error => {
-                dispatch(fetchFolderFailed())
-            })
-    }
-}
+     return new Promise((resolve) => {
+         resolve(data);
+     });
+ }
+
 export const getFolderId = (id) => {
-    return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/folders.json")
-            .then(response => {
-                let folder = response.data.find(fld => fld.id.toString() === id );
-                if(folder)
-                dispatch(setFolderId(folder));
-            })
-            .catch(error => {
-                dispatch(fetchFolderFailed())
-            })
-    }
+    return new Promise((resolve, reject) => {
+         let folder = data.find(fld => fld.id.toString() === id);
+         if(folder) return resolve(folder);
+         reject("Folder not found");
+     });
 }
 
 

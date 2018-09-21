@@ -2,12 +2,12 @@ import { FILE } from "../constants/File";
 
 let initialState = {
     files: [],
-    file: [],
+    file: null,
     isOpenInnerFile: false,
     error: false
 }
 
-const setFiles = (payload) => {
+const setFiles = (state, payload) => {
     return {
         ...state,
         files: payload,
@@ -15,7 +15,7 @@ const setFiles = (payload) => {
     }
 }
 
-const setFileId = (payload) => {
+const setFileId = (state, payload) => {
     return {
         ...state,
         file: payload,
@@ -23,7 +23,7 @@ const setFileId = (payload) => {
     }
 }
 
-const removeFile = (payload) => {
+const removeFile = (state, payload) => {
     return {
         ...state,
         files: state.files.filter(fl => fl.id !== payload)
@@ -36,7 +36,7 @@ const openInnerFile = (state) => {
     }
 }
 
-const fetchFileFailed = () => {
+const fetchFileFailed = (state) => {
     return {
         ...state,
         error: true

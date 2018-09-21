@@ -2,12 +2,12 @@ import { FOLDER } from "../constants/Folder";
 
 let initialState = {
     folders: [],
-    folder: [],
+    folder: null,
     isOpenInnerFolder: false,
     error: false
 }
 
-const setFolders = (payload) => {
+const setFolders = (state, payload) => {
     return {
         ...state,
         folders: payload,
@@ -15,7 +15,7 @@ const setFolders = (payload) => {
     }
 }
 
-const setFolderId = (payload) => {
+const setFolderId = (state, payload) => {
     return {
         ...state,
         folder: payload,
@@ -24,21 +24,21 @@ const setFolderId = (payload) => {
 }
 
 
-const removeFolder = (payload) => {
+const removeFolder = (state, payload) => {
     return {
         ...state,
         folders: state.folders.filter(fld => fld.id !== payload)
     }
 }
 
-const openInnerFolder = () => {
+const openInnerFolder = (state) => {
     return {
         ...state, 
         isOpenInnerFolder: true
     }
 }
 
-const fetchFolderFailed = () => {
+const fetchFolderFailed = (state) => {
     return {
         ...state,
         error: true
