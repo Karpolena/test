@@ -14,45 +14,45 @@ const MainMenu = () => {
 
                 <li className="aside__item">                
                     <a href="">
-                        <i className="icon fab fa-google-drive"></i>
+                        <i className="icon fab fa-google-drive" />
                         Мой диск
                     </a>
                 </li>
 
                 <li className="aside__item">
                     <a href="">
-                    <i className="icon fas fa-desktop"></i>
+                    <i className="icon fas fa-desktop" />
                         Компьютеры
                     </a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon fas fa-users"></i>
+                    <i className="icon fas fa-users" />
                     <a href="">Доступные мне</a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon far fa-clock"></i>
+                    <i className="icon far fa-clock" />
                     <a href="">Недавние</a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon fas fa-star"></i>
+                    <i className="icon fas fa-star" />
                     <a href="">Помеченные</a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon fas fa-trash"></i>
+                    <i className="icon fas fa-trash" />
                     <a href="">Корзина</a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon fas fa-cloud"></i>
+                    <i className="icon fas fa-cloud" />
                     <a href="">Резервные копии</a>
                 </li>
 
                 <li className="aside__item">
-                    <i className="icon fas fa-cloud-download-alt"></i>
+                    <i className="icon fas fa-cloud-download-alt" />
                     <a href="">Хранилище</a>
                 </li>
 

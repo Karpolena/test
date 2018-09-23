@@ -39,7 +39,7 @@ svg {
     margin: 10px 20px;
 }
 .main {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     height: 100%;
 }
 
@@ -159,7 +159,7 @@ svg {
 }
 
 .content {
-    display: table;
+    /* display: table; */
     padding: 10px;
     width: calc(100% - 248px);
 }
@@ -216,6 +216,7 @@ svg {
 }
 .home {
     display: flex;
+    flex-wrap: wrap;
 }
 
 
