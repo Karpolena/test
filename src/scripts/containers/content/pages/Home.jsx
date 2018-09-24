@@ -21,6 +21,7 @@ class Home extends Component {
                         return <FolderCard 
                             key={folder.id}
                             folder={folder}
+                            onDelete={(id) => this.props.dispatch(FolderActions.removeFolder(id))}
                             />
                     })
                 }
@@ -29,6 +30,7 @@ class Home extends Component {
                         return <FileCard 
                             key={file.id}
                             file={file}
+                            onDelete={(id) => this.props.dispatch(FileActions.removeFile(id))}
                             />
                     })
                 }

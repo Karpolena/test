@@ -6,7 +6,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
-const FileCard = ({file}) => {
+const FileCard = ({file, onDelete}) => {
     return(
         <Card className="Card" >
             <Link to={`/file/${file.id}`}>
@@ -16,7 +16,7 @@ const FileCard = ({file}) => {
                     {file.content}
                 </CardContent>             
             </Link> 
-            <Button>Удалить</Button>      
+            <Button onClick={() => onDelete(file.id)}>Удалить</Button>      
         </Card>
     )
     
