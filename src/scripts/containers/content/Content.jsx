@@ -10,7 +10,7 @@ const Content = () => {
     return (
         <content className="content">
             <Switch>
-                <Route exect path="/" component={Home}/>
+                <Route exact path="/" component={Home}/>
                 <Route path="/folder/:id" component={InnerFolder}/>
                 <Route path="/file/:id" component={InnerFile} />
                 <Route path="*" component={NotFound}/>

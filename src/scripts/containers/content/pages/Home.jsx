@@ -17,7 +17,7 @@ class Home extends Component {
         return (
             <div className="home">
                 {
-                    this.props.folderStore.map(folder => {
+                    this.props.folders.map(folder => {
                         return <FolderCard 
                             key={folder.id}
                             folder={folder}
@@ -25,7 +25,7 @@ class Home extends Component {
                     })
                 }
                 {
-                    this.props.fileStore.map(file => {
+                    this.props.files.map(file => {
                         return <FileCard 
                             key={file.id}
                             file={file}
@@ -39,15 +39,15 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        folderStore: state.folderStore.folders,
-        fileStore: state.fileStore.files
+        folders: state.folderStore.folders,
+        files: state.fileStore.files
     }
 }
 
 Home.propTypes = {
     dispatch: PropTypes.func,
-    folderStore: PropTypes.array,
-    fileStore: PropTypes.array
+    folders: PropTypes.array,
+    files: PropTypes.array
 }
 export default connect(mapStateToProps)(Home);
 

@@ -218,6 +218,21 @@ svg {
     display: flex;
     flex-wrap: wrap;
 }
+.innerFile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__textarea{
+        width: 80%;
+        padding: 10px;
+        margin: 10px;
+    }
+}
+.innerFolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 
