@@ -23,7 +23,8 @@ const FileCard = ({file, onDelete}) => {
 }
 
 FileCard.propTypes = {
-    file: PropTypes.object
+    file: PropTypes.object,
+    onDelete: PropTypes.func
 }
 
 export default FileCard;

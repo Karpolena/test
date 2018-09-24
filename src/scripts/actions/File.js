@@ -1,12 +1,12 @@
 import { FILE } from "../constants/File";
 import * as FileApi from "../api/actions/File";
 
-// export const saveFile = (file) => {
-//     return {
-//         type: FILE.SAVE_FILE,
-//         payload: file
-//     }
-// }
+export const addFile = (file) => {
+    return {
+        type: FILE.ADD_FILE,
+        payload: file
+    }
+}
 
 export const removeFile = (id) => {
     return {

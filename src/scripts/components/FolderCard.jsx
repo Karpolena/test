@@ -22,7 +22,8 @@ const FolderCard = ({folder, onDelete}) => {
 }
 
 FolderCard.propTypes = {
-    folder: PropTypes.object
+    folder: PropTypes.object,
+    onDelete: PropTypes.func
 }
 
 export default FolderCard;

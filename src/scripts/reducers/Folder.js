@@ -23,6 +23,13 @@ const setFolderId = (state, payload) => {
     }
 }
 
+const addFolder = (state, payload) => {
+    return {
+        ...state,
+        folders: state.folders.concat(payload)
+    }
+}
+
 
 const removeFolder = (state, payload) => {
     return {
@@ -51,6 +58,8 @@ const folderReducer = (state = initialState, action) => {
             return setFolders(state, action.payload);
         case FOLDER.SET_FOLDER_ID:
             return setFolderId(state, action.payload);
+        case FOLDER.ADD_FOLDER:
+            return addFolder(state, action.payload);
         case FOLDER.REMOVE_FOLDER:
             return removeFolder(state, action.payload);
         case FOLDER.OPEN_INNER_FOLDER:

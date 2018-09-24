@@ -1,12 +1,12 @@
 import { FOLDER } from "../constants/Folder";
 import * as FolderApi from "../api/actions/Folder";
 
-// export const saveFolder = (folder) => {
-//     return {
-//         type: FOLDER.SAVE_FOLDER,
-//         payload: folder
-//     }
-// }
+export const addFolder = (folder) => {
+    return {
+        type: FOLDER.ADD_FOLDER,
+        payload: folder
+    }
+}
 
 export const removeFolder = (id) => {
     return {

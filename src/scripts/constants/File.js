@@ -1,5 +1,5 @@
     export const FILE = {
-    // SAVE_FILE: "SAVE_FILE",    
+    ADD_FILE: "ADD_FILE",    
     GET_FILES: "GET_FILES",
     SET_FILES: "SET_FILES",
     GET_FILE_ID: "GET_FILE_ID",

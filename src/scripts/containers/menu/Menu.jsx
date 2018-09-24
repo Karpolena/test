@@ -1,15 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
 // import PropTypes from "prop-types";
 
 import Modal from "../../containers/modal/Modal";
 
-
-
-const MainMenu = () => {
-    return (
-        <aside className="aside">
-            <button className="aside-btn">Создать</button>
-            <Modal />
+class MainMenu extends Component {
+    state = {
+        showBackGround: false
+    }
+    showBackGroundHandler = () => {
+        this.setState({
+            showBackGround: true
+        });
+    }
+    hiddenBackGroundHandnler = () => {
+        this.setState({
+            showBackGround: false
+        })
+    }
+    render() {
+        return(
+            <aside className="aside">
+            <button className="aside-btn" onClick={this.showBackGroundHandler}>Создать</button>
+            <Modal 
+                show={this.state.showBackGround} 
+                hidden={this.hiddenBackGroundHandnler}/>
             <ul className="aside__list">
 
                 <li className="aside__item">                
@@ -57,8 +71,9 @@ const MainMenu = () => {
                 </li>
 
             </ul>
-        </aside>        
-    );
+        </aside>
+        )
+    }
 }
 
 // MainMenu.propTypes = {

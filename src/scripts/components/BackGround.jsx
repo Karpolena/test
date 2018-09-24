@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const Back = (props) => {
+const BackGround = (props) => {
     return (
        props.show 
         ? 
@@ -16,10 +16,10 @@ const Back = (props) => {
 
 }
 
-Back.propTypes = {
+BackGround.propTypes = {
     show: PropTypes.bool,
     clicked: PropTypes.func,
     children: PropTypes.node
 }
 
-export default Back;
+export default BackGround;

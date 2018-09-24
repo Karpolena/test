@@ -1,17 +1,27 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 
-import Back from "../../components/Back";
 import InnerModal from "../../components/InnerModal";
+import BackGround from "../../components/BackGround";
 
-const Modal = () => {      
+
+const Modal = (props) => {      
     return (
         <div  >
-            <Back show={false} className="back">            
+            <BackGround 
+                className="back" 
+                show={props.show}
+                clicked={props.hidden}>            
                 <InnerModal />
-            </Back>
+            </BackGround>
         </div>
     );
+}
+
+Modal.propTypes = {
+show: PropTypes.bool,
+hidden: PropTypes.func
 }
 
 

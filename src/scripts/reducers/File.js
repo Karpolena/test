@@ -4,7 +4,9 @@ let initialState = {
     files: [],
     file: null,
     isOpenInnerFile: false,
-    error: false
+    error: false,
+    isShowBack: false
+
 }
 
 const setFiles = (state, payload) => {
@@ -20,6 +22,13 @@ const setFileId = (state, payload) => {
         ...state,
         file: payload,
         error: false
+    }
+}
+
+const addFile = (state, payload) => {
+    return {
+        ...state,
+        files: state.files.concat(payload)
     }
 }
 
@@ -49,6 +58,8 @@ const fileReducer = (state = initialState, action) => {
             return setFiles(state, action.payload);
         case FILE.SET_FILE_ID:
             return setFileId(state, action.payload);
+        case FILE.ADD_FILE:
+            return addFile(state, action.payload);
         case FILE.REMOVE_FILE:
             return removeFile(state, action.payload);
         case FILE.OPEN_INNER_FILE:

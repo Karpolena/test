@@ -1,6 +1,5 @@
 export const FOLDER = {
-    // SAVE_FOLDER: "SAVE_FOLDER",
-        
+    ADD_FOLDER: "ADD_FOLDER",        
     GET_FOLDERS: "GET_FOLDERS",
     SET_FOLDERS: "SET_FOLDERS",
     GET_FOLDER_ID: "GET_FOLDER_ID",
