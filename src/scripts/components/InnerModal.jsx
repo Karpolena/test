@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
-const ModalCard = () => {
+const ModalCard = (props) => {
     return(
-        <Card className="modal" >
+        <Card className="modal" style={{ opacity: props.show ? "1" : "0" }}>
             <CardContent className="modal__content">
                 <input className="modal__input" type="text" placeholder="Введите название" />
                 <div className="radio-wrap">
@@ -27,5 +29,9 @@ const ModalCard = () => {
         </Card>
     )
 }
+
+ModalCard.propTypes = {
+    show: PropTypes.bool
+    }
 
 export default ModalCard;

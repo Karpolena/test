@@ -12,9 +12,8 @@ const Modal = (props) => {
             <BackGround 
                 className="back" 
                 show={props.show}
-                clicked={props.hidden}>            
-                <InnerModal />
-            </BackGround>
+                clicked={props.hidden} />
+            <InnerModal show={props.show}/>
         </div>
     );
 }

@@ -5,25 +5,26 @@ import Modal from "../../containers/modal/Modal";
 
 class MainMenu extends Component {
     state = {
-        showBackGround: false
+        show: false        
     }
-    showBackGroundHandler = () => {
+    showHandler = () => {
         this.setState({
-            showBackGround: true
+            show: true
         });
     }
-    hiddenBackGroundHandnler = () => {
+    hiddenHandnler = () => {
         this.setState({
-            showBackGround: false
+            show: false
         })
     }
     render() {
         return(
             <aside className="aside">
-            <button className="aside-btn" onClick={this.showBackGroundHandler}>Создать</button>
+            <button className="aside-btn" onClick={this.showHandler}>Создать</button>
             <Modal 
-                show={this.state.showBackGround} 
-                hidden={this.hiddenBackGroundHandnler}/>
+                show={this.state.show} 
+                hidden={this.hiddenHandnler}
+                />
             <ul className="aside__list">
 
                 <li className="aside__item">                
