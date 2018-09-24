@@ -212,7 +212,12 @@ svg {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;  
+    align-items: center;
+    justify-content: space-around;
+    &__content{        
+       width: 80%;
+       height: 80%;
+    } 
 }
 .home {
     display: flex;

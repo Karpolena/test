@@ -4,19 +4,20 @@ import { Link } from "react-router-dom";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
 
 const FolderCard = ({folder}) => {
     return(
-        <Link to={`/folder/${folder.id}`}>
-            <Card className="Card" >                
+        <Card className="Card" >
+            <Link to={`/folder/${folder.id}`}>                
                 <CardContent className="Card__content">
                     {folder.id}
                     {folder.title}
                     {folder.content}
                 </CardContent> 
-                <button>Удалить</button>                    
-            </Card>
-        </Link>
+            </Link>
+            <Button>Удалить</Button>                    
+        </Card>
     )    
 }
 
