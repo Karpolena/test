@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
+import * as ModalActions from "../actions/Modal";
 
 class ModalCreate extends Component {
     state = {
@@ -31,6 +33,38 @@ class ModalCreate extends Component {
     onChangeContent = (event) => {
         this.setState({
             content: event.target.value
+        })
+    }
+    onCreateFolder = () => {
+        const folder = {
+            id: this.state.id,
+            title: this.state.title,
+            data: this.state.data,
+            content: this.state.content
+        }
+        axios.post("https://test-17409.firebaseio.com/folders.json", folder)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+            
+        this.props.dispatch(ModalActions.closeModal())
+    }
+    onCreateFile = () => {
+        const file = {
+            id: this.state.id,
+            title: this.state.title,
+            data: this.state.data,
+            content: this.state.content
+        }
+        axios.post("https://test-17409.firebaseio.com/files.json", file)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+            
+        this.props.dispatch(ModalActions.closeModal())
+    }
+    componentDidMount () {
+        axios.get("https://test-17409.firebaseio.com/.json")
+        .then (response => {
+            console.log(response.data)
         })
     }
     render() {
@@ -62,7 +96,7 @@ class ModalCreate extends Component {
                             placeholder="content"
                             value={this.state.content}
                             onChange={this.onChangeContent} />                           
-                        <Button>                       
+                        <Button onClick={this.props.folderType ? this.onCreateFolder : this.onCreateFile}>                       
                             Создать
                         </Button>
                     </CardContent>        
@@ -75,9 +109,17 @@ class ModalCreate extends Component {
 
 
 ModalCreate.propTypes = {
-open: PropTypes.bool,
 openCreate: PropTypes.bool,
-show: PropTypes.bool
+show: PropTypes.bool,
+folderType: PropTypes.bool,
+dispatch: PropTypes.func
 }
 
-export default connect(null)(ModalCreate);
+const mapStateToProps = (state) => { 
+    return {
+        folderType: state.modalStore.folderType,
+        fileType: state.modalStore.fileType
+    }
+}
+
+export default connect(mapStateToProps)(ModalCreate);

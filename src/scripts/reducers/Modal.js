@@ -7,7 +7,7 @@ let initialstate = {
     openSelect: false,
     openCreate: false,
     fileType: false,
-    folderType: false
+    folderType: true
 }
 
 

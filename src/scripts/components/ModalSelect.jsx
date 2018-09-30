@@ -19,7 +19,8 @@ const ModalSelect = ({dispatch, show}) => {
                             className="radio-input" 
                             type="radio" 
                             name="type" 
-                            onChange={() => dispatch(ModalActions.setTypeFolder())}/>
+                            onChange={() => dispatch(ModalActions.setTypeFolder())}
+                            checked/>
                     </div>
                     <div className="radio-block">
                         <i className="icon fas fa-file" />
