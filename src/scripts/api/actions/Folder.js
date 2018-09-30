@@ -1,4 +1,9 @@
-// import FolderActions from "../../actions/File";
+// import axios from "axios";
+
+
+// import { FOLDER } from "../../constants/Folder";
+
+// import FolderActions from "../../actions/Folder";
 
 
 // export const getFolders = () => {
@@ -7,12 +12,12 @@
 //             .then(response => {
 //                 dispatch(FolderActions.setFolders(response.data));
 //             })
-//             .catch(error => {
-//                 dispatch(FolderActions.fetchFolderFailed())
-//             })
+            // .catch(error => {
+            //     dispatch(FolderActions.fetchFolderFailed())
+            // })
 //     }
 // }
-// export const getFolderId = (id) => {
+// export const getFolderId = (id, history) => {
 //     return dispatch => {
 //         axios.get("https://test-17409.firebaseio.com/folders.json")
 //             .then(response => {
@@ -20,26 +25,27 @@
 //                 if(folder)
 //                 dispatch(FolderActions.setFolderId(folder));
 //             })
-//             .catch(error => {
-//                 dispatch(FolderActions.fetchFolderFailed())
+//             .catch( () => {
+//                 // dispatch(FolderActions.fetchFolderFailed());
+//                 history.push("/not-found")
 //             })
 //     }
 // }
 
-import {data} from "../data/folderData";
+// import {data} from "../data/folderData";
 
-export const getFolders = () => {
-     return new Promise((resolve) => {
-         resolve(data);
-     });
- }
+// export const getFolders = () => {
+//      return new Promise((resolve) => {
+//          resolve(data);
+//      });
+//  }
 
-export const getFolderId = (id) => {
-    return new Promise((resolve, reject) => {
-         let folder = data.find(fld => fld.id.toString() === id);
-         if(folder) return resolve(folder);
-         reject("Folder not found");
-     });
-}
+// export const getFolderId = (id) => {
+//     return new Promise((resolve, reject) => {
+//          let folder = data.find(fld => fld.id.toString() === id);
+//          if(folder) return resolve(folder);
+//          reject("Folder not found");
+//      });
+// }
 
 

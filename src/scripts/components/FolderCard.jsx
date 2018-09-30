@@ -8,12 +8,14 @@ import Button from "@material-ui/core/Button";
 
 const FolderCard = ({folder, onDelete}) => {
     return(
-        <Card className="Card" >
+        <Card className="Card folder" >
             <Link to={`/folder/${folder.id}`}>                
                 <CardContent className="Card__content">
-                    {folder.id}
+                    {/* {folder.id} */}
                     {folder.title}
+                    <br />
                     {folder.content}
+                    <br />
                 </CardContent> 
             </Link>
             <Button onClick={() => onDelete(folder.id)}>Удалить</Button>                    

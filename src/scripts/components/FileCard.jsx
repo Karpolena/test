@@ -8,18 +8,19 @@ import Button from "@material-ui/core/Button";
 
 const FileCard = ({file, onDelete}) => {
     return(
-        <Card className="Card" >
+        <Card className="Card file" >
             <Link to={`/file/${file.id}`}>
                 <CardContent className="Card__content">
                     {file.title}
-                    {file.id}
+                    <br />
+                    {/* {file.id} */}
                     {file.content}
+                    <br />
                 </CardContent>             
             </Link> 
             <Button onClick={() => onDelete(file.id)}>Удалить</Button>      
         </Card>
-    )
-    
+    )    
 }
 
 FileCard.propTypes = {

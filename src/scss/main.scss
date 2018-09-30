@@ -150,8 +150,8 @@ svg {
         justify-content: center;
     }   
     &__input {
-        width: 300px;
-        height: 43px;
+        width: 80%;
+        // height: 43px;
         background-color: $light-grey;
         padding: 10px;
         margin: 10px;
@@ -160,6 +160,13 @@ svg {
         outline: none;
     }
 }
+.create {
+    width: 60%;
+    height: 80%;
+    left: 20%;
+    top: 10%;
+}
+
 
 .content {
     /* display: table; */
@@ -221,6 +228,9 @@ svg {
        width: 80%;
        height: 80%;
     } 
+}
+.file {
+    height: 150px;
 }
 .home {
     display: flex;

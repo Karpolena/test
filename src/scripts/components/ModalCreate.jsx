@@ -50,7 +50,7 @@ class ModalCreate extends Component {
     }
     onCreateFile = () => {
         const file = {
-            id: this.state.id,
+            // id: this.state.id,
             title: this.state.title,
             data: this.state.data,
             content: this.state.content
@@ -59,25 +59,20 @@ class ModalCreate extends Component {
             .then(response => console.log(response))
             .catch(error => console.log(error));
             
-        this.props.dispatch(ModalActions.closeModal())
+        this.props.dispatch(ModalActions.closeModal());       
     }
-    componentDidMount () {
-        axios.get("https://test-17409.firebaseio.com/.json")
-        .then (response => {
-            console.log(response.data)
-        })
-    }
+   
     render() {
         return (
             <div>
-                <Card className="modal" style={{ opacity:  this.props.show ? "1" : "0" }}>
+                <Card className="modal create" style={{ opacity:  this.props.show ? "1" : "0" }}>
                     <CardContent className="modal__content">
-                        <input 
+                        {/* <input 
                             className="modal__input" 
                             type="text" 
                             placeholder="id" 
                             value={this.state.id}
-                            onChange={this.onChangeId}/>
+                            onChange={this.onChangeId}/> */}
                         <input 
                             className="modal__input" 
                             type="text" 
@@ -94,6 +89,7 @@ class ModalCreate extends Component {
                             className="modal__input" 
                             type="text" 
                             placeholder="content"
+                            rows="25"
                             value={this.state.content}
                             onChange={this.onChangeContent} />                           
                         <Button onClick={this.props.folderType ? this.onCreateFolder : this.onCreateFile}>                       
