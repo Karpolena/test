@@ -5,9 +5,10 @@ let initialState = {
     file: null,
     isOpenInnerFile: false,
     error: false,
-    isShowBack: false
-
+    isShowBack: false   
 }
+
+
 
 const setFiles = (state, payload) => {
     return {

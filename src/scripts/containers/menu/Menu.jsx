@@ -1,84 +1,79 @@
-import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import Modal from "../../containers/modal/Modal";
+import * as ModalActions from "../../actions/Modal";
 
-class MainMenu extends Component {
-    state = {
-        show: false        
-    }
-    showHandler = () => {
-        this.setState({
-            show: true
-        });
-    }
-    hiddenHandnler = () => {
-        this.setState({
-            show: false
-        })
-    }
-    render() {
-        return(
-            <aside className="aside">
-            <button className="aside-btn" onClick={this.showHandler}>Создать</button>
-            <Modal 
-                show={this.state.show} 
-                hidden={this.hiddenHandnler}
-                />
-            <ul className="aside__list">
+const MainMenu = (props) => {
+    return(
+        <aside className="aside">
+        <button className="aside-btn" onClick={() => {props.dispatch(ModalActions.openModalSelect())} }>Создать</button>
+        <Modal 
+            show={props.showBackground} 
+            hidden={() => {props.dispatch(ModalActions.closeModal())}}
+            />
+        <ul className="aside__list">
 
-                <li className="aside__item">                
-                    <a href="">
-                        <i className="icon fab fa-google-drive" />
-                        Мой диск
-                    </a>
-                </li>
+            <li className="aside__item">                
+                <a href="">
+                    <i className="icon fab fa-google-drive" />
+                    Мой диск
+                </a>
+            </li>
 
-                <li className="aside__item">
-                    <a href="">
-                    <i className="icon fas fa-desktop" />
-                        Компьютеры
-                    </a>
-                </li>
+            <li className="aside__item">
+                <a href="">
+                <i className="icon fas fa-desktop" />
+                    Компьютеры
+                </a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon fas fa-users" />
-                    <a href="">Доступные мне</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon fas fa-users" />
+                <a href="">Доступные мне</a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon far fa-clock" />
-                    <a href="">Недавние</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon far fa-clock" />
+                <a href="">Недавние</a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon fas fa-star" />
-                    <a href="">Помеченные</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon fas fa-star" />
+                <a href="">Помеченные</a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon fas fa-trash" />
-                    <a href="">Корзина</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon fas fa-trash" />
+                <a href="">Корзина</a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon fas fa-cloud" />
-                    <a href="">Резервные копии</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon fas fa-cloud" />
+                <a href="">Резервные копии</a>
+            </li>
 
-                <li className="aside__item">
-                    <i className="icon fas fa-cloud-download-alt" />
-                    <a href="">Хранилище</a>
-                </li>
+            <li className="aside__item">
+                <i className="icon fas fa-cloud-download-alt" />
+                <a href="">Хранилище</a>
+            </li>
 
-            </ul>
-        </aside>
-        )
-    }
+        </ul>
+    </aside>
+    )
+} 
+
+MainMenu.propTypes = {
+    dispatch: PropTypes.func,
+    showBackground: PropTypes.bool
 }
 
-// MainMenu.propTypes = {
+const mapStateToProps = (state) => {
+    return {
+        showBackground: state.modalStore.showBackground, 
+        openSelect: state.modalStore.openSelect
+    };
+}
 
-// }
-
-export default MainMenu;
+export default connect(mapStateToProps)(MainMenu);

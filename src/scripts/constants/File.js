@@ -1,4 +1,5 @@
     export const FILE = {
+    SET_TYPE_FILE: "SET_TYPE_FILE",
     ADD_FILE: "ADD_FILE",    
     GET_FILES: "GET_FILES",
     SET_FILES: "SET_FILES",

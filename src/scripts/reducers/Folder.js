@@ -4,8 +4,10 @@ let initialState = {
     folders: [],
     folder: null,
     isOpenInnerFolder: false,
-    error: false
+    error: false    
 }
+
+
 
 const setFolders = (state, payload) => {
     return {

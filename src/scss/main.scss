@@ -135,8 +135,8 @@ svg {
 }
 
 .modal {
-    width: 350px;    
-    height: 200px;  
+    min-width: 350px;    
+    min-height: 200px;  
     z-index: 20;
     position: absolute;
     left: calc(50% - 175px);
@@ -154,6 +154,7 @@ svg {
         height: 43px;
         background-color: $light-grey;
         padding: 10px;
+        margin: 10px;
         font: 1em $roboto;
         color: $grey;
         outline: none;
