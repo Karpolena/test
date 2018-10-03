@@ -58,26 +58,33 @@ export const setFolderId = (folder) => {
     }
 }
 
-export const getFolderId = (id, history) => {
+export const getFolderId = (id) => {
     return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/folders.json")
-            .then(response => {
-                let folder = response.data.find(fld => fld.id.toString() === id );
-                if(folder)
-                dispatch(setFolderId(folder));
+        axios.get("https://test-17409.firebaseio.com/folders/" + id +".json")
+            .then(response => {                
+                dispatch(setFolderId(response.data));
             })
-            .catch( () => {
-                // dispatch(FolderActions.fetchFolderFailed());
+            .catch(() => {
+                // dispatch(FileActions.fetchFileFailed());
                 history.push("/not-found")
             })
     }
 }
 
-export const fetchFolderFailed = () => {
-    return {
-        type: FOLDER.FETCH_FOLDER_FAILED
-    }    
-}
+// export const fetchFolderFailed = () => {
+//     return {
+//         type: FOLDER.FETCH_FOLDER_FAILED
+//     }    
+// }
+
+
+
+
+
+
+
+
+
 
 // export const getFolders = () => (dispatch) => {
 //     FolderApi.getFolders()

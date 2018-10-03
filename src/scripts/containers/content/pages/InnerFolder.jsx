@@ -10,23 +10,30 @@ class InnerFolder extends Component {
     componentDidMount() {
         this.fetchFolder(this.props);
     }
-    componentWillReceiveProps(props) {
-        this.fetchFolder(props);
-    }
+    // componentWillReceiveProps(props) {
+    //     this.fetchFolder(props);
+    // }
 
     fetchFolder = (props) => {
-        this.props.dispatch(FolderActions.getFolderId(props.match.params.id));
+        this.props.dispatch(FolderActions.getFolderId(props.match.params.id, props.history));
     }
     render() {
         let {folder} = this.props;
-        if (!folder || folder.id.toString() !==this.props.match.params.id) return null;
-        return( 
-            <div className="innerFolder">
-                {folder.id}
+        let innerFolder = <p>... Загрузка</p>
+        // if (!folder || folder.id !==this.props.match.params.id) return null;
+        if (folder) {
+            innerFolder = (
+                <div className="innerFolder">
+                <h1>{folder.id}</h1>
                 <br />
-                {folder.content}
+                <p>{folder.content}</p>
             </div>
+            )
+        }
+        return (
+            innerFolder
         )
+       
     } 
 } 
 
@@ -41,7 +48,8 @@ const mapStateToProps = state => {
 InnerFolder.propTypes = {
     dispatch: PropTypes.func,
     folder: PropTypes.object,
-    match: PropTypes.object
+    match: PropTypes.object,
+    history: PropTypes.object
 }
 
 export default connect(mapStateToProps)(InnerFolder);

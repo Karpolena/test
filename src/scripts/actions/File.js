@@ -61,26 +61,31 @@ export const setFileId = (file) => {
     }
 }
 
-export const getFileId = (id, history) => {
+export const getFileId = (id) => {
     return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/files.json")
-        .then(response => {
-            let file = response.data.find(fl => fl.id.toString() === id);
-            if (file) 
-            dispatch(setFileId(file));
-        })
-        .catch(() => {
-            // dispatch(FileActions.fetchFileFailed());
-            history.push("/not-found")
-        })
+        axios.get("https://test-17409.firebaseio.com/files/"  + id +".json")
+            .then(response => {                
+                dispatch(setFileId(response.data));
+            })
+            .catch(() => {
+                // dispatch(FileActions.fetchFileFailed());
+                history.push("/not-found")
+            })
     }
 }
 
-export const fetchFileFailed = () => {
-    return {
-        type: FILE.FETCH_FILE_FAILED
-    }    
-}
+
+// export const fetchFileFailed = () => {
+//     return {
+//         type: FILE.FETCH_FILE_FAILED
+//     }    
+// }
+
+
+
+
+
+
 
 // export const getFiles = () => (dispatch) => {
 //     FileApi.getFiles()
