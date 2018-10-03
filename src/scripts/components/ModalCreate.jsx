@@ -65,7 +65,7 @@ class ModalCreate extends Component {
     render() {
         return (
             <div>
-                <Card className="modal create" style={{ opacity:  this.props.show ? "1" : "0" }}>
+                <Card className="modal create" style={{ display:  this.props.show ? "block" : "none" }}>
                     <CardContent className="modal__content">
                         {/* <input 
                             className="modal__input" 

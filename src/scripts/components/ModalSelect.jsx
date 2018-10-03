@@ -9,7 +9,7 @@ import * as ModalActions from "../actions/Modal";
 
 const ModalSelect = ({dispatch, show}) => {
     return(
-        <Card className="modal" style={{ opacity: show ? "1" : "0" }}>
+        <Card className="modal" style={{ display: show ? "block" : "none" }}>
             <CardContent className="modal__content">                    
                 <div className="radio-wrap">
                     <div className="radio-block">
