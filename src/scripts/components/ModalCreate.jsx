@@ -7,6 +7,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import * as ModalActions from "../actions/Modal";
+import * as FileActions from "../actions/File";
+import * as FolderActions from "../actions/Folder";
 
 class ModalCreate extends Component {
     state = {
@@ -43,20 +45,26 @@ class ModalCreate extends Component {
             content: this.state.content
         }
         axios.post("https://test-17409.firebaseio.com/folders.json", folder)
-            .then(response => console.log(response))
+            .then(() => {
+                this.props.dispatch(FolderActions.addFolder(folder))
+            })
             .catch(error => console.log(error));
             
         this.props.dispatch(ModalActions.closeModal())
+
+        
     }
     onCreateFile = () => {
         const file = {
-            // id: this.state.id,
+            id: this.state.id,
             title: this.state.title,
             data: this.state.data,
             content: this.state.content
         }
         axios.post("https://test-17409.firebaseio.com/files.json", file)
-            .then(response => console.log(response))
+            .then(() => {
+                this.props.dispatch(FileActions.addFile(file))
+            })
             .catch(error => console.log(error));
             
         this.props.dispatch(ModalActions.closeModal());       
