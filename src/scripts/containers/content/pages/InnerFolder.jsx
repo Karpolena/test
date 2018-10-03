@@ -24,7 +24,7 @@ class InnerFolder extends Component {
         if (folder) {
             innerFolder = (
                 <div className="innerFolder">
-                <h1>{folder.id}</h1>
+                <h1>{folder.title}</h1>
                 <br />
                 <p>{folder.content}</p>
             </div>

@@ -22,6 +22,16 @@ export const removeFile = (id) => {
     }
 }
 
+export const deleteFileId = (id) => {
+    return dispatch => {
+        axios.delete("https://test-17409.firebaseio.com/files/" + id +".json")
+        .then(() => {
+            dispatch(removeFile(id));
+        })
+    }
+}
+
+
 export const openInnerFile = () => {
     return {
         type: FILE.OPEN_INNER_FILE
@@ -63,7 +73,7 @@ export const setFileId = (file) => {
 
 export const getFileId = (id) => {
     return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/files/"  + id +".json")
+        axios.get("https://test-17409.firebaseio.com/files/" + id +".json")
             .then(response => {                
                 dispatch(setFileId(response.data));
             })

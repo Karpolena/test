@@ -19,6 +19,15 @@ export const removeFolder = (id) => {
     }
 }
 
+export const deleteFolderId = (id) => {
+    return dispatch => {
+        axios.delete("https://test-17409.firebaseio.com/folders/" + id +".json")
+        .then(() => {
+            dispatch(removeFolder(id));
+        })
+    }
+}
+
 export const openInnerFolder = () => {
     return {
         type: FOLDER.OPEN_INNER_FOLDER

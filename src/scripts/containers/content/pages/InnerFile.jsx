@@ -20,20 +20,6 @@ class InnerFile extends Component {
         this.props.dispatch(FileActions.getFileId(props.match.params.id, props.history));
     } 
    
-    // render() {
-    //     let {file} = this.props;
-    //     if (!file || file.id !== this.props.match.params.id) return null;
-    //     return(
-    //         <div className="innerFile">
-    //             {file.title}
-    //             <br />
-    //             {file.content}
-    //             <textarea 
-    //             className="innerFile__textarea"
-    //             placeholder="Введите текст"/>
-    //         </div>
-    //     )
-    // }
     render() {
         let {file} = this.props;
         let innerFile = <p>... Загрузка</p>
@@ -41,7 +27,7 @@ class InnerFile extends Component {
         if (file) {
             innerFile = (
                 <div className="innerFile">
-                <h1>{file.id}</h1>
+                <h1>{file.title}</h1>
                 <br />
                 <p>{file.content}</p>                
             </div>

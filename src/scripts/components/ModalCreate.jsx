@@ -73,23 +73,26 @@ class ModalCreate extends Component {
                             placeholder="id" 
                             value={this.state.id}
                             onChange={this.onChangeId}/> */}
+                        <label>Title</label>
                         <input 
                             className="modal__input" 
                             type="text" 
                             placeholder="title"
                             value={this.state.title}
                             onChange={this.onChangeTitle}/>
+                        <label>Data</label>
                         <input 
                             className="modal__input" 
                             type="text" 
                             placeholder="data"
                             value={this.state.data}
                             onChange={this.onChangeData} />
+                        <label>Content</label>
                         <textarea 
                             className="modal__input" 
                             type="text" 
                             placeholder="content"
-                            rows="25"
+                            rows="10"
                             value={this.state.content}
                             onChange={this.onChangeContent} />                           
                         <Button onClick={this.props.folderType ? this.onCreateFolder : this.onCreateFile}>                       
