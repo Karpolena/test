@@ -7,9 +7,10 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import * as ModalActions from "../actions/Modal";
 
-const ModalSelect = ({dispatch, show}) => {
+const ModalSelect = (props) => {
+    
     return(
-        <Card className="modal" style={{ display: show ? "block" : "none" }}>
+        <Card className="modal" style={{ display: props.show ? "block" : "none" }}>
             <CardContent className="modal__content">                    
                 <div className="radio-wrap">
                     <div className="radio-block">
@@ -19,8 +20,8 @@ const ModalSelect = ({dispatch, show}) => {
                             className="radio-input" 
                             type="radio" 
                             name="type" 
-                            onChange={() => dispatch(ModalActions.setTypeFolder())}
-                            checked/>
+                            onChange={() => props.dispatch(ModalActions.setTypeFolder())}
+                            checked={props.folderType}/>
                     </div>
                     <div className="radio-block">
                         <i className="icon fas fa-file" />
@@ -29,10 +30,11 @@ const ModalSelect = ({dispatch, show}) => {
                             className="radio-input" 
                             type="radio" 
                             name="type"
-                            onChange={() => dispatch(ModalActions.setTypeFile())} />
+                            onChange={() => props.dispatch(ModalActions.setTypeFile())}
+                            checked={props.fileType} />
                     </div>
                 </div>                    
-                <Button onClick={() => dispatch(ModalActions.openModalCreate())}>                       
+                <Button onClick={() => props.dispatch(ModalActions.openModalCreate())}>                       
                     Создать
                 </Button>
             </CardContent>        
@@ -44,7 +46,16 @@ const ModalSelect = ({dispatch, show}) => {
 ModalSelect.propTypes = {
     show: PropTypes.bool,
     dispatch: PropTypes.func,
-    openSelect: PropTypes.bool
+    openSelect: PropTypes.bool,
+    folderType: PropTypes.bool,
+    fileType: PropTypes.bool
     }
 
-export default connect(null)(ModalSelect);
+    const mapStateToProps = (state) => { 
+        return {
+            folderType: state.modalStore.folderType,
+            fileType: state.modalStore.fileType
+        }
+    }
+
+export default connect(mapStateToProps)(ModalSelect);
