@@ -15,6 +15,8 @@ padding: 0px;
 box-sizing: border-box;
 }
 body {
+    max-width: 1600px;
+    margin: 0px auto;
     font: 0.9em $roboto;
     color: $dark-grey;    
 }
@@ -31,7 +33,7 @@ a {
 i {
     padding-right: 10px;
     color: $dark-grey;
-    font-size: 1.3em;
+    font-size: 1.25em;
 }
 h5 {
     margin: 15px 0;
@@ -53,6 +55,7 @@ svg {
     display: flex;
     justify-content: space-between;
     align-self: center;
+    width: 100%;
     &-left {
         display: flex;
     }
@@ -128,6 +131,9 @@ svg {
         text-align: left;
     }
 }
+.content {
+    width: calc(100% - 248px);
+}
 
 .back {
     width: 100%;
@@ -149,7 +155,6 @@ svg {
     left: calc(50% - 175px);
     top: 30%;
     padding: 20px;
-
     &__content {
         display: flex;
         flex-direction: column;
@@ -158,13 +163,12 @@ svg {
     }   
     &__input {
         width: 80%;
-        // height: 43px;
         background-color: $light-grey;
         padding: 10px;
         margin: 10px;
         font: 1em $roboto;
         color: $grey;
-        outline: none;
+        outline: none;        
     }
 }
 .create {
@@ -173,12 +177,6 @@ svg {
     left: 20%;
     top: 10%;
 }
-.content {
-    /* display: table; */
-    padding: 10px;
-    width: calc(100% - 248px);
-}
-
 
 .radio {
     font: 0.9em $roboto;
@@ -202,7 +200,6 @@ svg {
     width: 200px;
     height: 50px; 
     margin: 10px;
-    // display: flex;
     float: left;
     &:hover {
         background-color: $light;
@@ -223,7 +220,6 @@ svg {
 .file {
     height: 180px;
     display: flex;
-    // flex-direction: column;
     justify-content: center;
     align-items: center;
     &__title {
@@ -239,7 +235,7 @@ svg {
 }
 .home {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 .inner{
     display: flex;

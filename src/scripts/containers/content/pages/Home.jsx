@@ -16,6 +16,23 @@ class Home extends Component {
     render () {
         return (
             <div className="home">
+            <header className="header" style={{borderBottom: "1px solid #ccc"}}>
+            <h2>vdsf</h2>
+            <nav>
+                <ul className="nav-tools">
+                    <li title="Справка">
+                        <button className="nav-tools__btn">
+                            <i className="icon far fa-question-circle" />
+                        </button>
+                    </li>
+                    <li title="Настройки">
+                        <button className="nav-tools__btn">
+                            <i className="icon fas fa-cog" />
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            </header>
                 <h5>Папки</h5>
                 <div key="1">                
                     {

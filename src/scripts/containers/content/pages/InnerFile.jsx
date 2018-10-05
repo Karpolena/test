@@ -27,9 +27,9 @@ class InnerFile extends Component {
         if (file) {            
             innerFile = (
                 <div className="inner">
-                    <header className="header">
+                    {/* <header className="header">
                         
-                    </header>
+                    </header> */}
                     <h1>{file.title}</h1>
                     <br />
                     <p>{file.content}</p>                
