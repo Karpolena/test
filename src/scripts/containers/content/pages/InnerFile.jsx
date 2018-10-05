@@ -24,12 +24,15 @@ class InnerFile extends Component {
         let {file} = this.props;
         let innerFile = <p>... Загрузка</p>
         // if (!file || file.id !==this.props.match.params.id) return null;
-        if (file) {
+        if (file) {            
             innerFile = (
-                <div className="innerFile">
-                <h1>{file.title}</h1>
-                <br />
-                <p>{file.content}</p>                
+                <div className="inner">
+                    <header className="header">
+                        
+                    </header>
+                    <h1>{file.title}</h1>
+                    <br />
+                    <p>{file.content}</p>                
             </div>
             )
         }

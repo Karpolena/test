@@ -23,14 +23,14 @@ class InnerFolder extends Component {
         // if (!folder || folder.id !==this.props.match.params.id) return null;
         if (folder) {
             innerFolder = (
-                <div className="innerFolder">
+                <div className="inner">
                 <h1>{folder.title}</h1>
                 <br />
                 <p>{folder.content}</p>
             </div>
             )
         }
-        return (
+        return (           
             innerFolder
         )
        

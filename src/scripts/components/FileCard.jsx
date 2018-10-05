@@ -11,14 +11,13 @@ const FileCard = ({file, onDelete}) => {
         <Card className="Card file" >
             <Link to={`/file/${file.id}`}>
                 <CardContent className="Card__content">
-                    {file.title}
-                    <br />
-                    {/* {file.id} */}
-                    {file.content}
-                    <br />
+                    <i className="icon fas fa-file" />
+                    <div className="file__title">
+                        {file.title}
+                    </div>
                 </CardContent>             
             </Link> 
-            <Button onClick={() => onDelete(file.id)}>Удалить</Button>      
+            {/* <Button onClick={() => onDelete(file.id)}>Удалить</Button>       */}
         </Card>
     )    
 }

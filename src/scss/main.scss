@@ -4,8 +4,10 @@ $arial: 'Arial', sans-serif;
 
 $light: #f5f5f5;
 $light-grey: #eee;
-$grey: #666;
+$grey: #999;
+$dark-grey: #666;
 $blue: rgb(66, 131, 252);
+$light-blue: rgb(236, 240, 247);
 
 * {
 margin: 0px;
@@ -14,7 +16,7 @@ box-sizing: border-box;
 }
 body {
     font: 0.9em $roboto;
-    color: $grey;    
+    color: $dark-grey;    
 }
 button, input {
     border: none;
@@ -26,10 +28,13 @@ ul {
 a {
     text-decoration: none;
 }
-.icon {
-    margin-right:  10px;
-    color: $grey;
-    font-size: 1.4em;
+i {
+    padding-right: 10px;
+    color: $dark-grey;
+    font-size: 1.3em;
+}
+h5 {
+    margin: 15px 0;
 }
 button {
     cursor: pointer;
@@ -39,7 +44,6 @@ svg {
     margin: 10px 20px;
 }
 .main {
-    /* max-width: 1200px; */
     height: 100%;
 }
 
@@ -114,8 +118,14 @@ svg {
     &__item {
         font-size: 0.9em;
         display: flex;
+        justify-content: space-around;
         align-items: center;
-        padding: 10px 0px;
+        padding: 13px 0px;
+    }
+    a {
+        display: block;
+        width: 150px;
+        text-align: left;
     }
 }
 
@@ -123,9 +133,6 @@ svg {
     width: 100%;
     height: 100%;
     position: fixed;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     z-index: 10;
     left: 0;
     right: 0;
@@ -166,38 +173,13 @@ svg {
     left: 20%;
     top: 10%;
 }
-
-
 .content {
     /* display: table; */
     padding: 10px;
     width: calc(100% - 248px);
 }
 
-.folder {
-    float: left;
-    width: 240px;
-    height: 150px;
-    border: 1px solid #d1d1d1;
 
-    &__header {
-        padding: 20px;
-        box-sizing: border-box;
-        font-size: 16px;
-
-        & input {
-            width: 100%;
-            border: 0;
-            outline: none;
-            font-size: 16px;
-            height: 20px;
-            line-height: 20px;
-            border-bottom: 1px solid #d1d1d1;       
-        }
-    }
-
-    
-}
 .radio {
     font: 0.9em $roboto;
     &-wrap {
@@ -218,25 +200,48 @@ svg {
 
 .Card {
     width: 200px;
-    height: 200px; 
+    height: 50px; 
     margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    &__content{        
-       width: 80%;
-       height: 80%;
-    } 
+    // display: flex;
+    float: left;
+    &:hover {
+        background-color: $light;
+    }
+    &:active {
+        border-color: $blue;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    i {
+        color: $grey;
+    }
 }
+
 .file {
-    height: 150px;
+    height: 180px;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__title {
+        width: 180px;
+        border-top: 1px solid $light-grey;
+        padding: 20px 0;
+        text-align: center;
+    }
+    i {
+        font-size: 4.5em;
+        margin: 20px;
+    }
 }
 .home {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column
 }
-.innerFile{
+.inner{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -246,11 +251,7 @@ svg {
         margin: 10px;
     }
 }
-.innerFolder{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 
 

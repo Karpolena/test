@@ -16,24 +16,30 @@ class Home extends Component {
     render () {
         return (
             <div className="home">
-                {
-                    this.props.folders.map(folder => {
-                        return <FolderCard 
-                            key={folder.id}
-                            folder={folder}
-                            onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
-                            />
-                    })
-                }
-                {
-                    this.props.files.map(file => {
-                        return <FileCard 
-                            key={file.id}
-                            file={file}
-                            onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
-                            />
-                    })
-                }
+                <h5>Папки</h5>
+                <div key="1">                
+                    {
+                        this.props.folders.map(folder => {
+                            return <FolderCard 
+                                key={folder.id}
+                                folder={folder}
+                                onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
+                                />
+                        })
+                    }
+                </div>
+                <h5>Файлы</h5>
+                <div key="2">
+                    {
+                        this.props.files.map(file => {
+                            return <FileCard 
+                                key={file.id}
+                                file={file}
+                                onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
+                                />
+                        })
+                    }
+                </div>                
             </div>
         )
     }

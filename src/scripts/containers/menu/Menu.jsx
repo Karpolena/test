@@ -15,18 +15,14 @@ const MainMenu = (props) => {
             />
         <ul className="aside__list">
 
-            <li className="aside__item">                
-                <a href="">
-                    <i className="icon fab fa-google-drive" />
-                    Мой диск
-                </a>
+            <li className="aside__item">
+                <i className="icon fab fa-google-drive" />
+                <a href="">Мой диск</a>
             </li>
 
-            <li className="aside__item">
-                <a href="">
+            <li className="aside__item">                
                 <i className="icon fas fa-desktop" />
-                    Компьютеры
-                </a>
+                <a href=""> Компьютеры</a>                
             </li>
 
             <li className="aside__item">
