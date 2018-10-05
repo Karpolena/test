@@ -9,6 +9,14 @@ import FolderCard from "../../../components/FolderCard";
 import FileCard from "../../../components/FileCard";
 
 class Home extends Component {
+    state = {
+        showNavButton: false 
+    }
+    showNavHandler = () => {
+        this.setState({
+            showNavButton: true
+        })
+    }
     componentDidMount () {
         this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
@@ -16,22 +24,22 @@ class Home extends Component {
     render () {
         return (
             <div className="home">
-            <header className="header" style={{borderBottom: "1px solid #ccc"}}>
-            <h2>vdsf</h2>
-            <nav>
-                <ul className="nav-tools">
-                    <li title="Справка">
-                        <button className="nav-tools__btn">
-                            <i className="icon far fa-question-circle" />
-                        </button>
-                    </li>
-                    <li title="Настройки">
-                        <button className="nav-tools__btn">
-                            <i className="icon fas fa-cog" />
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+            <header className="header line">
+            <p>Мой диск</p>
+                <nav className="nav" style={{ display: this.state.showNavButton ? "block" : "none" }}>
+                    <ul className="nav-tools">
+                        <li title="Редактировать">
+                            <button className="nav-tools__btn">
+                                <i className="icon fas fa-edit"/>
+                            </button>
+                        </li>
+                        <li title="Удалить">
+                            <button className="nav-tools__btn">
+                                <i className="icon fas fa-trash"/>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
             </header>
                 <h5>Папки</h5>
                 <div key="1">                
@@ -41,6 +49,7 @@ class Home extends Component {
                                 key={folder.id}
                                 folder={folder}
                                 onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
+                                clicked={this.showNavHandler}
                                 />
                         })
                     }
@@ -52,6 +61,7 @@ class Home extends Component {
                             return <FileCard 
                                 key={file.id}
                                 file={file}
+                                clicked={this.showNavHandler}
                                 onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
                                 />
                         })

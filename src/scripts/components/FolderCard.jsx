@@ -12,6 +12,7 @@ const FolderCard = (props) => {
     return(
         <Card
          className="Card"
+         onClick={props.clicked}
          onDoubleClick={() => props.dispatch(push(`/folder/${props.folder.id}`))}>
             {/* <Link to={`/folder/${props.folder.id}`}>                 */}
                 <CardContent >
@@ -31,7 +32,8 @@ const FolderCard = (props) => {
 FolderCard.propTypes = {
     folder: PropTypes.object,
     onDelete: PropTypes.func,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    clicked: PropTypes.func
 }
 
 export default connect(null)(FolderCard);

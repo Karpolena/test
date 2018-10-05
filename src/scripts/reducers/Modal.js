@@ -2,7 +2,7 @@ import { MODAL } from "../constants/Modal";
 
 
 
-let initialstate = {  
+let initialState = {  
     showBackground: false, 
     openSelect: false,
     openCreate: false,
@@ -56,7 +56,7 @@ const setTypeFile = (state) => {
 
 
 
-const modalReducer = (state = initialstate, action) => {
+const modalReducer = (state = initialState, action) => {
     switch (action.type) {        
         case MODAL.OPEN_MODAL_SELECT:
             return openModalSelect(state);

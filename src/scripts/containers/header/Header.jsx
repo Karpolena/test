@@ -22,7 +22,7 @@ const Header = () => {
                     </button>
                 </form>
             </div>
-            <nav>
+            <nav className="nav">
                 <ul className="nav-tools">
                     <li title="Справка">
                         <button className="nav-tools__btn">

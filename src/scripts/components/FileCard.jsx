@@ -12,6 +12,7 @@ const FileCard = (props) => {
     return(
         <Card 
             className="Card file"
+            onClick={props.clicked}
             onDoubleClick={() => props.dispatch(push(`/file/${props.file.id}`))}
              >
             {/* <Link to={`/file/${props.file.id}`}> */}
@@ -30,7 +31,8 @@ const FileCard = (props) => {
 FileCard.propTypes = {
     file: PropTypes.object,
     onDelete: PropTypes.func,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    clicked: PropTypes.func
 }
 
 export default connect(null)(FileCard);
