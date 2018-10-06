@@ -19,17 +19,22 @@ class Home extends Component {
     //         active: true
     //     });
     // }
+    // folderClickHandler = (id) => {
+    //     this.props.dispatch(FolderActions.setActiveFolder(id));
+    //     // if (this.props.activeFolder == this.props.folder.id) {console.log(true)}
+
+    // }
     componentDidMount () {
         this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
     }
+    
     render () {
         return (
             <div className="home">
             <header className="header line">
             <p>Мой диск</p>
-                <nav className="nav">   
-                {/* <nav className={`nav${this.state.showNavButton ? " block" : " none"}`}>                */}
+                <nav className={`nav${this.props.activeFile ||this.props.activeFolder ? " " : " none"}`}> 
                     <ul className="nav-tools">
                         <li title="Редактировать">
                             <button className="nav-tools__btn">
@@ -48,12 +53,13 @@ class Home extends Component {
                 <div key="1">                
                     {
                         this.props.folders.map(folder => {
-                            return <FolderCard
-                            
+                            return <FolderCard 
                                 key={folder.id}
                                 folder={folder}
                                 onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
+                                // clicked={this.folderClickHandler}
                                 clicked={(id) => this.props.dispatch(FolderActions.setActiveFolder(id))}
+                                style={this.props.activeFolder === folder.id}
                                 />
                         })
                     }
@@ -67,6 +73,8 @@ class Home extends Component {
                                 file={file}                                
                                 onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
                                 clicked={(id) => this.props.dispatch(FileActions.setActiveFile(id))}
+                                // activeFolder={this.props.activeFolder}
+                                style={this.props.activeFile === file.id}
                                 />
                         })
                     }
@@ -79,15 +87,19 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         folders: state.folderStore.folders,
+        folder: state.folderStore.folder,
         files: state.fileStore.files,
-        activeFile: state.fileStore.activeFile
+        activeFile: state.fileStore.activeFile,
+        activeFolder: state.folderStore.activeFolder
     }
 }
 
 Home.propTypes = {
     dispatch: PropTypes.func,
     folders: PropTypes.array,
-    files: PropTypes.array
+    files: PropTypes.array,
+    activeFolder: PropTypes.string,
+    activeFile: PropTypes.array
 }
 export default connect(mapStateToProps)(Home);
 

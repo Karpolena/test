@@ -6,7 +6,7 @@ $light: #f5f5f5;
 $light-grey: #eee;
 $grey: #999;
 $dark-grey: #666;
-$blue: rgb(66, 131, 252);
+$blue: rgb(118, 162, 243);
 $light-blue: rgb(236, 240, 247);
 
 * {
@@ -107,6 +107,11 @@ svg {
     display: flex;
     align-items: center;
 }
+
+.none {
+    display: none;
+}
+
 .nav-tools {
     margin: 0px 50px;
     display: flex;
@@ -245,6 +250,10 @@ svg {
         font-size: 4.5em;
         margin: 20px;
     }
+}
+.active {
+    color: $blue;
+    border: 1px solid $blue;
 }
 .home {
     display: flex;

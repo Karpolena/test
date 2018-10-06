@@ -11,19 +11,13 @@ import CardContent from "@material-ui/core/CardContent";
 const FolderCard = (props) => {
     return(
         <Card
-         className="Card"
+         className={`Card${props.style ? " active" : " "}`}
          onClick={() => props.clicked(props.folder.id)}
          onDoubleClick={() => props.dispatch(push(`/folder/${props.folder.id}`))}>
-            {/* <Link to={`/folder/${props.folder.id}`}>                 */}
                 <CardContent >
                     <i className="icon fas fa-folder" />
-                    {/* {folder.id} */}
                     {props.folder.title}
-                    <br />
-                    {/* {folder.content}
-                    <br /> */}
                 </CardContent> 
-            {/* </Link> */}
             {/* <Button onClick={() => onDelete(props.folder.id)}>Удалить</Button>                     */}
         </Card>
     )    
@@ -35,5 +29,7 @@ FolderCard.propTypes = {
     dispatch: PropTypes.func,
     clicked: PropTypes.func
 }
+
+
 
 export default connect(null)(FolderCard);
