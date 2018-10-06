@@ -12,7 +12,7 @@ const FileCard = (props) => {
     return(
         <Card 
             className="Card file"
-            onClick={props.clicked}
+            onClick={() => props.clicked(props.file.id)}
             onDoubleClick={() => props.dispatch(push(`/file/${props.file.id}`))}
              >
             {/* <Link to={`/file/${props.file.id}`}> */}

@@ -80,6 +80,13 @@ export const getFolderId = (id) => {
     }
 }
 
+export const setActiveFolder = (id) => {
+    return {
+        type: FOLDER.SET_ACTIVE_FOLDER,
+        payload: id
+    }
+}
+
 // export const fetchFolderFailed = () => {
 //     return {
 //         type: FOLDER.FETCH_FOLDER_FAILED
@@ -94,28 +101,5 @@ export const getFolderId = (id) => {
 
 
 
-
-// export const getFolders = () => (dispatch) => {
-//     FolderApi.getFolders()
-//     .then(folders => {
-//         dispatch ({
-//                 type: FOLDER.SET_FOLDERS,
-//                 payload: folders
-//         })
-//     })
-// }
-
-// export const getFolderId = (id, history) => (dispatch) => {
-//     FolderApi.getFolderId(id)
-//     .then (folder => {
-//         dispatch ({
-//             type: FOLDER.SET_FOLDER_ID,
-//             payload: folder
-//         })
-//     })
-//     .catch(() => {
-//         history.push("/not-found")
-//     })
-// }
 
 

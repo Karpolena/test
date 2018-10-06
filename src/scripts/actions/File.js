@@ -84,6 +84,13 @@ export const getFileId = (id) => {
     }
 }
 
+export const setActiveFile = (id) => {
+    return {
+        type: FILE.SET_ACTIVE_FILE,
+        payload: id
+    }
+}
+
 
 // export const fetchFileFailed = () => {
 //     return {

@@ -12,7 +12,7 @@ const FolderCard = (props) => {
     return(
         <Card
          className="Card"
-         onClick={props.clicked}
+         onClick={() => props.clicked(props.folder.id)}
          onDoubleClick={() => props.dispatch(push(`/folder/${props.folder.id}`))}>
             {/* <Link to={`/folder/${props.folder.id}`}>                 */}
                 <CardContent >
