@@ -3,3 +3,4 @@ public/js
 public/css
 public/images
 package-lock.json
+.env

@@ -15,7 +15,7 @@ module.exports = {
       chunkModules: false
     },
     devtool: "source-map",
-    context: path.join(__dirname, "src"),
+    context: path.join(__dirname, "src", "client"),
     entry: {
         main: "./scripts/index.jsx"
     },
