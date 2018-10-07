@@ -80,12 +80,12 @@ export const getFolderId = (id) => {
     }
 }
 
-export const setActiveFolder = (id) => {
-    return {
-        type: FOLDER.SET_ACTIVE_FOLDER,
-        payload: id
-    }
-}
+// export const setActiveFolder = (id) => {
+//     return {
+//         type: FOLDER.SET_ACTIVE_FOLDER,
+//         payload: id
+//     }
+// }
 
 // export const fetchFolderFailed = () => {
 //     return {

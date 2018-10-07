@@ -5,25 +5,11 @@ import { connect } from "react-redux";
 
 import * as FileActions from "../../../actions/File";
 import * as FolderActions from "../../../actions/Folder";
+import * as ActiveActions from "../../../actions/Active";
 import FolderCard from "../../../components/FolderCard";
 import FileCard from "../../../components/FileCard";
 
 class Home extends Component {
-    // state = {
-    //     showNavButton: false,
-    //     active: false 
-    // }
-    // showNavHandler = () => {
-    //     this.setState({
-    //         showNavButton: true,
-    //         active: true
-    //     });
-    // }
-    // folderClickHandler = (id) => {
-    //     this.props.dispatch(FolderActions.setActiveFolder(id));
-    //     // if (this.props.activeFolder == this.props.folder.id) {console.log(true)}
-
-    // }
     componentDidMount () {
         this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
@@ -57,8 +43,7 @@ class Home extends Component {
                                 key={folder.id}
                                 folder={folder}
                                 onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
-                                // clicked={this.folderClickHandler}
-                                clicked={(id) => this.props.dispatch(FolderActions.setActiveFolder(id))}
+                                clicked={(id) => this.props.dispatch(ActiveActions.setActiveFolder(id))}
                                 style={this.props.activeFolder === folder.id}
                                 />
                         })
@@ -72,8 +57,7 @@ class Home extends Component {
                                 key={file.id}
                                 file={file}                                
                                 onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
-                                clicked={(id) => this.props.dispatch(FileActions.setActiveFile(id))}
-                                // activeFolder={this.props.activeFolder}
+                                clicked={(id) => this.props.dispatch(ActiveActions.setActiveFile(id))}
                                 style={this.props.activeFile === file.id}
                                 />
                         })
@@ -89,8 +73,8 @@ const mapStateToProps = state => {
         folders: state.folderStore.folders,
         folder: state.folderStore.folder,
         files: state.fileStore.files,
-        activeFile: state.fileStore.activeFile,
-        activeFolder: state.folderStore.activeFolder
+        activeFile: state.activeStore.activeFile,
+        activeFolder: state.activeStore.activeFolder
     }
 }
 

@@ -27,12 +27,12 @@ const setFileId = (state, payload) => {
     }
 }
 
-const setActiveFile = (state, payload) => {
-    return {
-        ...state,
-        activeFile: payload
-    }
-}
+// const setActiveFile = (state, payload) => {
+//     return {
+//         ...state,
+//         activeFile: payload
+//     }
+// }
 
 const addFile = (state, payload) => {
     return {
@@ -67,8 +67,8 @@ const fileReducer = (state = initialState, action) => {
             return setFiles(state, action.payload);
         case FILE.SET_FILE_ID:
             return setFileId(state, action.payload);
-        case FILE.SET_ACTIVE_FILE:
-            return setActiveFile(state, action.payload);
+        // case FILE.SET_ACTIVE_FILE:
+        //     return setActiveFile(state, action.payload);
         case FILE.ADD_FILE:
             return addFile(state, action.payload);
         case FILE.REMOVE_FILE:

@@ -25,9 +25,10 @@ const FolderCard = (props) => {
 
 FolderCard.propTypes = {
     folder: PropTypes.object,
-    onDelete: PropTypes.func,
+    // onDelete: PropTypes.func,
     dispatch: PropTypes.func,
-    clicked: PropTypes.func
+    clicked: PropTypes.func,
+    style: PropTypes.bool
 }
 
 

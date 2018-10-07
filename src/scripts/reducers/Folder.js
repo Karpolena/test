@@ -26,12 +26,12 @@ const setFolderId = (state, payload) => {
     }
 }
 
-const setActiveFolder = (state, payload) => {
-    return {
-        ...state,
-        activeFolder: payload
-    }
-}
+// const setActiveFolder = (state, payload) => {
+//     return {
+//         ...state,
+//         activeFolder: payload
+//     }
+// }
 
 const addFolder = (state, payload) => {
     return {
@@ -68,8 +68,8 @@ const folderReducer = (state = initialState, action) => {
             return setFolders(state, action.payload);
         case FOLDER.SET_FOLDER_ID:
             return setFolderId(state, action.payload);
-        case FOLDER.SET_ACTIVE_FOLDER:
-            return setActiveFolder(state, action.payload);
+        // case FOLDER.SET_ACTIVE_FOLDER:
+        //     return setActiveFolder(state, action.payload);
         case FOLDER.ADD_FOLDER:
             return addFolder(state, action.payload);
         case FOLDER.REMOVE_FOLDER:

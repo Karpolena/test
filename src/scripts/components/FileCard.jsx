@@ -28,9 +28,10 @@ const FileCard = (props) => {
 
 FileCard.propTypes = {
     file: PropTypes.object,
-    onDelete: PropTypes.func,
+    // onDelete: PropTypes.func,
     dispatch: PropTypes.func,
-    clicked: PropTypes.func   
+    clicked: PropTypes.func,
+    style: PropTypes.bool  
 }
 
 
