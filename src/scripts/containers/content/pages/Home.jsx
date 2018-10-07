@@ -10,6 +10,13 @@ import FolderCard from "../../../components/FolderCard";
 import FileCard from "../../../components/FileCard";
 
 class Home extends Component {
+    // onDelete = (id) => {
+        
+    //     // this.props.activeFile == id
+    //     // ? 
+    //     this.props.dispatch(FolderActions.deleteFolderId(id)) 
+    
+    // }
     componentDidMount () {
         this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
@@ -28,7 +35,16 @@ class Home extends Component {
                             </button>
                         </li>
                         <li title="Удалить">
-                            <button className="nav-tools__btn">
+                            <button 
+                            className="nav-tools__btn"
+                            onClick={
+                                    this.props. activeFolder 
+                                    ? 
+                                    () =>  this.props.dispatch(FolderActions.deleteFolderId(this.props.activeFolder))
+                                    :
+                                    () =>  this.props.dispatch(FileActions.deleteFileId(this.props.activeFile))
+                                }
+                            >
                                 <i className="icon fas fa-trash"/>
                             </button>
                         </li>
@@ -42,7 +58,6 @@ class Home extends Component {
                             return <FolderCard 
                                 key={folder.id}
                                 folder={folder}
-                                onDelete={(id) => this.props.dispatch(FolderActions.deleteFolderId(id))}
                                 clicked={(id) => this.props.dispatch(ActiveActions.setActiveFolder(id))}
                                 style={this.props.activeFolder === folder.id}
                                 />
@@ -55,8 +70,7 @@ class Home extends Component {
                         this.props.files.map(file => {
                             return <FileCard 
                                 key={file.id}
-                                file={file}                                
-                                onDelete={(id) => this.props.dispatch(FileActions.deleteFileId(id))}
+                                file={file}
                                 clicked={(id) => this.props.dispatch(ActiveActions.setActiveFile(id))}
                                 style={this.props.activeFile === file.id}
                                 />
