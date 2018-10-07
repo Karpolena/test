@@ -14,3 +14,8 @@ export const setActiveFolder = (id) => {
         payload: id
     }
 }
+export const removeActive = () => {
+    return {
+        type: ACTIVE.REMOVE_ACTIVE
+    }
+}

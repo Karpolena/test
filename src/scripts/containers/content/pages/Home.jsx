@@ -10,16 +10,10 @@ import FolderCard from "../../../components/FolderCard";
 import FileCard from "../../../components/FileCard";
 
 class Home extends Component {
-    // onDelete = (id) => {
-        
-    //     // this.props.activeFile == id
-    //     // ? 
-    //     this.props.dispatch(FolderActions.deleteFolderId(id)) 
-    
-    // }
     componentDidMount () {
         this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
+        this.props.dispatch(ActiveActions.removeActive());
     }
     
     render () {
