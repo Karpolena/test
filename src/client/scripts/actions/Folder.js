@@ -41,9 +41,28 @@ export const setFolders = (folders) => {
     }
 }
 
+// export const getFolders = () => {
+//     return dispatch => {
+//         axios.get("https://test-17409.firebaseio.com/folders.json")
+//             .then(response => {
+//                 const getedFolders = [];
+//                 for (let key in response.data) {
+//                     getedFolders.push({
+//                         ...response.data[key],
+//                         id: key
+//                     })
+//                 }
+//                 dispatch(setFolders(getedFolders));
+//             })
+//             // .catch(error => {
+//             //     dispatch(FolderActions.fetchFolderFailed())
+//             // })
+//     }
+// }
+
 export const getFolders = () => {
     return dispatch => {
-        axios.get("https://test-17409.firebaseio.com/folders.json")
+        axios.post("get-page", {type: "folder"})
             .then(response => {
                 const getedFolders = [];
                 for (let key in response.data) {

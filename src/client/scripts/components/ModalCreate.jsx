@@ -44,16 +44,25 @@ class ModalCreate extends Component {
             data: this.state.data,
             content: this.state.content
         }
-        axios.post("https://test-17409.firebaseio.com/folders.json", folder)
-            .then(() => {
-                this.props.dispatch(FolderActions.addFolder(folder))
-            })
-            .catch(error => console.log(error));
-            
-        this.props.dispatch(ModalActions.closeModal())
+        // axios.post("https://test-17409.firebaseio.com/folders.json", folder)
+        //     .then(() => {
+        //         this.props.dispatch(FolderActions.addFolder(folder))
+        //     })
+        //     .catch(error => console.log(error));
+
+
+
+        axios.post("create-folder", {type: "folder"})
+        .then(() => {
+            this.props.dispatch(FolderActions.addFolder(folder))
+        })
+        .catch(error => console.log(error));
 
         
+            
+        this.props.dispatch(ModalActions.closeModal())
     }
+
     onCreateFile = () => {
         const file = {
             id: this.state.id,

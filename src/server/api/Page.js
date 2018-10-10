@@ -12,12 +12,12 @@ export default ({models, validation}) => {
         let _context = '_default_';
 
         if(!context) {
-            let requst = [
+            let request = [
                 models.Files.find({context: _context}),
                 models.Folders.find({context: _context}), 
             ]
             try {
-                let [files, folders] = await Promise.all(requst);
+                let [files, folders] = await Promise.all(request);
                 res.status(200).json({
                     files: models.Response.Files(files), 
                     folders: models.Response.Folders(folders)
