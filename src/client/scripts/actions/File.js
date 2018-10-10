@@ -1,14 +1,14 @@
 
-import axios from "axios";
+/* import axios from "axios";
 
 
-import { FILE } from "../constants/File";
+import { FILE } from "../constants/File"; */
 
 // import * as FileApi from "../api/actions/File";
 
 
 
-export const addFile = (file) => {
+/* export const addFile = (file) => {
     return {
         type: FILE.ADD_FILE,
         payload: file
@@ -82,7 +82,7 @@ export const getFileId = (id) => {
                 history.push("/not-found")
             })
     }
-}
+} */
 
 // export const setActiveFile = (id) => {
 //     return {

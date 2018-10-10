@@ -11,9 +11,9 @@ import FileCard from "../../../components/FileCard";
 
 class Home extends Component {
     componentDidMount () {
-        this.props.dispatch(FolderActions.getFolders());
+        /* this.props.dispatch(FolderActions.getFolders());
         this.props.dispatch(FileActions.getFiles());
-        this.props.dispatch(ActiveActions.removeActive());
+        this.props.dispatch(ActiveActions.removeActive()); */
     }
     
     render () {

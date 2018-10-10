@@ -74,5 +74,8 @@ module.exports = {
         new webpack.DefinePlugin({
           NODE_ENV: JSON.stringify(NODE_ENV)
         })
-    ]
+    ],
+    watchOptions: {
+        poll: true
+      }
 };

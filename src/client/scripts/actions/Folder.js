@@ -1,11 +1,11 @@
-import axios from "axios";
+/* import axios from "axios";
 
-import { FOLDER } from "../constants/Folder";
+import { FOLDER } from "../constants/Folder"; */
 // import * as FolderApi from "../api/actions/Folder";
 
 
 
-export const addFolder = (folder) => {
+/* export const addFolder = (folder) => {
     return {
         type: FOLDER.ADD_FOLDER,
         payload: folder
@@ -26,9 +26,9 @@ export const deleteFolderId = (id) => {
             dispatch(removeFolder(id));
         })
     }
-}
+} */
 
-export const openInnerFolder = () => {
+/* export const openInnerFolder = () => {
     return {
         type: FOLDER.OPEN_INNER_FOLDER
     }
@@ -39,7 +39,7 @@ export const setFolders = (folders) => {
         type: FOLDER.SET_FOLDERS,
         payload: folders
     }
-}
+} */
 
 // export const getFolders = () => {
 //     return dispatch => {
@@ -60,9 +60,9 @@ export const setFolders = (folders) => {
 //     }
 // }
 
-export const getFolders = () => {
+/* export const getFolders = () => {
     return dispatch => {
-        axios.post("get-page", {type: "folder"})
+        axios.post("api/get-page", {type: "folder"})
             .then(response => {
                 const getedFolders = [];
                 for (let key in response.data) {
@@ -77,9 +77,9 @@ export const getFolders = () => {
             //     dispatch(FolderActions.fetchFolderFailed())
             // })
     }
-}
+} */
 
-export const setFolderId = (folder) => {
+/* export const setFolderId = (folder) => {
     return {
         type: FOLDER.SET_FOLDER_ID,
         payload: folder
@@ -97,7 +97,7 @@ export const getFolderId = (id) => {
                 history.push("/not-found")
             })
     }
-}
+} */
 
 // export const setActiveFolder = (id) => {
 //     return {
