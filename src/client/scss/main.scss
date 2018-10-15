@@ -42,6 +42,7 @@ p {
     font: 1.25em $roboto;
     height: 45px;
     line-height: 45px;
+    margin: 0 10px;
 }
 button {
     cursor: pointer;
@@ -150,7 +151,8 @@ svg {
     }
 }
 .content {
-    width: calc(100% - 248px);
+    // width: calc(100% - 248px);
+    width: 100%;
 }
 
 .back {
@@ -173,13 +175,14 @@ svg {
     left: calc(50% - 175px);
     top: 30%;
     padding: 30px;
-    &__form {
+}
+.form {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }   
+    
     &__input {
         width: inherit;
         background-color: $light-grey;
@@ -199,8 +202,8 @@ svg {
     }
     textarea {
         border: none;
-    }
-}
+    } 
+} 
 
 .create {
     width: 50%;

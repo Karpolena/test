@@ -6,8 +6,12 @@ import Modal from "../../containers/modal/Modal";
 import * as ModalActions from "../../actions/Modal";
 
 const MainMenu = (props) => {
+    let className = ["aside"];
+        if (props.file) {
+            className.push("none");
+        }
     return(
-        <aside className="aside">
+        <aside className={className.join(" ")}>
         <button className="aside-btn" onClick={() => {props.dispatch(ModalActions.openModalSelect())} }>Создать</button>
         <Modal 
             show={props.showBackground} 
@@ -62,13 +66,15 @@ const MainMenu = (props) => {
 
 MainMenu.propTypes = {
     dispatch: PropTypes.func,
-    showBackground: PropTypes.bool
+    showBackground: PropTypes.bool,
+    file: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
     return {
         showBackground: state.modalStore.showBackground, 
-        openSelect: state.modalStore.openSelect
+        openSelect: state.modalStore.openSelect,
+        file: state.fileStore.file
     };
 }
 

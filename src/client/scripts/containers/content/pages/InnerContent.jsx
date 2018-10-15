@@ -28,6 +28,8 @@ class InnerContent extends Component {
     renderActionPanel = () => {
         return (
             <ActionPanelSection
+                file={this.props.file}
+                folder={this.props.folder}
                 context={this.props.context}
                 activeFile={this.props.activeFile}
                 activeFolder={this.props.activeFolder}
@@ -84,7 +86,9 @@ class InnerContent extends Component {
 
 const mapStateToProps = ({ pageStore, activeStore, folderStore, fileStore }) => {
     return {
+        folder: folderStore.folder,
         folders: folderStore.folders,
+        file: fileStore.file,
         files: fileStore.files,
         context: pageStore.context,
         fetching: pageStore.fetching,
@@ -95,7 +99,9 @@ const mapStateToProps = ({ pageStore, activeStore, folderStore, fileStore }) => 
 
 InnerContent.propTypes = {
     dispatch: PropTypes.func,
+    folder: PropTypes.object,
     folders: PropTypes.object,
+    file: PropTypes.object,
     files: PropTypes.object,
     context: PropTypes.string,
     match: PropTypes.object,

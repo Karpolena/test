@@ -1,13 +1,15 @@
-import PAGE_CONSTANTS from "./../constants/Page";
+import PAGE_CONSTANTS, {TYPE} from "./../constants/Page";
 import { FOLDER_CONSTANTS } from "../constants/Folder";
 class Folder {
     constructor() {
         this.folders = new Map();
+        this.folder = null;
     }
 
     getState = () => ({
         ...{
-            folders: this.folders
+            folders: this.folders,
+            folder: this.folder
         }
     });
 
@@ -20,11 +22,18 @@ class Folder {
         this.folders = _folders;
     };
 
-    setPage = ({ folders }) => {
+    setPage = ({ folders, activePageType, contextElement }) => {
         this._setFolders(folders);
+        if(activePageType === TYPE.FOLDER && contextElement) {
+            this.folder = contextElement;
+        } else {
+            this.folder = null;
+        }
+    
     };
 
     clearPage = () => {
+        this.folder = null;
         this.folders = new Map();
     };
 

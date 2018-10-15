@@ -35,9 +35,16 @@ class ActionPanelSection extends Component {
         if (!this.props.activeFile && !this.props.activeFolder) {
             className.push("none");
         }
+       let title = "";
+       if (this.props.context) {
+           title = this.props.folder.title 
+       }
         return (
             <header className="header line">
-                <p>Мой диск</p>
+                <div className="header-left">
+                    <p>Мой диск</p>
+                    <p>{title}</p>
+                </div>
                 <nav className={className.join(" ")}>
                     <ul className="nav-tools">
                         {this.renderEditButton()}
@@ -51,7 +58,10 @@ class ActionPanelSection extends Component {
 
 ActionPanelSection.propTypes = {
     activeFile: PropTypes.string,
-    activeFolder: PropTypes.string
+    activeFolder: PropTypes.string,
+    context: PropTypes.string,
+    file: PropTypes.object,
+    folder: PropTypes.object
 };
 
 export default ActionPanelSection;

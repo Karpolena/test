@@ -8,7 +8,9 @@ import * as PageActions from "./../../../actions/Page";
 import { TYPE } from "./../../../constants/Page";
 
 class InnerFile extends Component {
-
+    state = {
+        content: ""
+    };
     componentDidMount() {
         let { match, dispatch } = this.props;
         dispatch(ActiveActions.removeActive());
@@ -30,6 +32,12 @@ class InnerFile extends Component {
         }
     }
 
+    handleInputContent = e => {
+        this.setState ({
+            content: e.target.value
+        })
+    }
+
     render() {
         let { file } = this.props;
         let innerFile = <p>... Загрузка</p>;
@@ -37,12 +45,33 @@ class InnerFile extends Component {
         if (file) {
             innerFile = (
                 <div className="inner">
-                    {/* <header className="header">
-                        
-                    </header> */}
-                    <h1>{file.title}</h1>
-                    <br />
-                    <p>{file.content}</p>
+                    <header className="header line">
+                        <div className="header-left">
+                            <p>Мой диск</p>
+                            <p>{this.props.file.title}</p>
+                        </div>                        
+                        <nav className="nav">
+                            <ul className="nav-tools">
+                                <li title="Редактировать">
+                                    <button className="nav-tools__btn">
+                                        <i className="icon fas fa-save" />
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>                  
+                    <form className="form textarea" onSubmit={this.onSubmit}>
+                        <label>Content</label>
+                        <textarea
+                            className="form__input "
+                            type="text"
+                            name="content"
+                            placeholder="content"
+                            rows="10"
+                            value={this.state.content}
+                            onChange={this.handleInputContent}
+                        />
+                    </form>
                 </div>
             );
         }
@@ -50,9 +79,9 @@ class InnerFile extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({fileStore}) => {
     return {
-        file: state.fileStore.file
+        file: fileStore.file
     };
 };
 

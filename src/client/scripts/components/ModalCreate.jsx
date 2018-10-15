@@ -38,25 +38,25 @@ class ModalCreate extends Component {
         });
     };
 
-    renderContentField = () => {
-        let { folderType } = this.props;
-        if (!folderType) {
-            return (
-                <div className="modal__textarea">
-                    <label>Content</label>
-                    <textarea
-                        className="modal__input"
-                        type="text"
-                        name="content"
-                        placeholder="content"
-                        rows="10"
-                        value={this.state.content}
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-            );
-        }
-    };
+    // renderContentField = () => {
+    //     let { folderType } = this.props;
+    //     if (!folderType) {
+    //         return (
+    //             <div className="form__textarea">
+    //                 <label>Content</label>
+    //                 <textarea
+    //                     className="form__input"
+    //                     type="text"
+    //                     name="content"
+    //                     placeholder="content"
+    //                     rows="10"
+    //                     value={this.state.content}
+    //                     onChange={this.handleInputChange}
+    //                 />
+    //             </div>
+    //         );
+    //     }
+    // };
 
     onSubmit = e => {
         e.preventDefault();
@@ -74,10 +74,10 @@ class ModalCreate extends Component {
                     style={{ display: this.props.show ? "block" : "none" }}
                 >
                     <CardContent>
-                        <form className="modal__form" onSubmit={this.onSubmit}>
+                        <form className="form" onSubmit={this.onSubmit}>
                             <label>Title</label>
                             <input
-                                className="modal__input"
+                                className="form__input"
                                 type="text"
                                 name="title"
                                 placeholder="title"
@@ -86,14 +86,14 @@ class ModalCreate extends Component {
                             />
                             <label>Descriptions</label>
                             <input
-                                className="modal__input"
+                                className="form__input"
                                 type="text"
                                 name="descriptions"
                                 placeholder="descriptions"
                                 value={this.state.descriptions}
                                 onChange={this.handleInputChange}
                             />
-                            {this.renderContentField()}
+                            {/* {this.renderContentField()} */}
                             <Button type="submit">Создать</Button>
                         </form>
                     </CardContent>
