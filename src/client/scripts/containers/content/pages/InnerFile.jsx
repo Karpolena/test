@@ -30,13 +30,17 @@ class InnerFile extends Component {
                 })
             );
         }
+
+        if (!this.props.file && props.file) {
+            this.setState({ content: props.file.content });
+        }
     }
 
     handleInputContent = e => {
-        this.setState ({
+        this.setState({
             content: e.target.value
-        })
-    }
+        });
+    };
 
     render() {
         let { file } = this.props;
@@ -49,7 +53,7 @@ class InnerFile extends Component {
                         <div className="header-left">
                             <p>Мой диск</p>
                             <p>{this.props.file.title}</p>
-                        </div>                        
+                        </div>
                         <nav className="nav">
                             <ul className="nav-tools">
                                 <li title="Редактировать">
@@ -59,9 +63,8 @@ class InnerFile extends Component {
                                 </li>
                             </ul>
                         </nav>
-                    </header>                  
+                    </header>
                     <form className="form textarea" onSubmit={this.onSubmit}>
-                        <label>Content</label>
                         <textarea
                             className="form__input "
                             type="text"
@@ -79,7 +82,7 @@ class InnerFile extends Component {
     }
 }
 
-const mapStateToProps = ({fileStore}) => {
+const mapStateToProps = ({ fileStore }) => {
     return {
         file: fileStore.file
     };

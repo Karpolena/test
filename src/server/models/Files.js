@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema } from "mongoose";
 
 export default () => {
   const folderSchema = new Schema(
@@ -31,7 +31,7 @@ export default () => {
       }
     },
     {
-      collection: 'files'/* ,
+      collection: "files"/* ,
       timestamps: true */
     }
   );

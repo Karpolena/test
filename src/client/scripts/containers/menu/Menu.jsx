@@ -4,78 +4,86 @@ import { connect } from "react-redux";
 
 import Modal from "../../containers/modal/Modal";
 import * as ModalActions from "../../actions/Modal";
+import { TYPE } from "./../../constants/Page";
 
-const MainMenu = (props) => {
+const MainMenu = props => {
     let className = ["aside"];
-        if (props.file) {
-            className.push("none");
-        }
-    return(
+    if (props.activePageType === TYPE.FILE) {
+        className.push("none");
+    }
+    return (
         <aside className={className.join(" ")}>
-        <button className="aside-btn" onClick={() => {props.dispatch(ModalActions.openModalSelect())} }>Создать</button>
-        <Modal 
-            show={props.showBackground} 
-            hidden={() => {props.dispatch(ModalActions.closeModal())}}
+            <button
+                className="aside-btn"
+                onClick={() => {
+                    props.dispatch(ModalActions.openModalSelect());
+                }}
+            >
+                Создать
+            </button>
+            <Modal
+                show={props.showBackground}
+                hidden={() => {
+                    props.dispatch(ModalActions.closeModal());
+                }}
             />
-        <ul className="aside__list">
+            <ul className="aside__list">
+                <li className="aside__item">
+                    <i className="icon fab fa-google-drive" />
+                    <a href="">Мой диск</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon fab fa-google-drive" />
-                <a href="">Мой диск</a>
-            </li>
+                <li className="aside__item">
+                    <i className="icon fas fa-desktop" />
+                    <a href=""> Компьютеры</a>
+                </li>
 
-            <li className="aside__item">                
-                <i className="icon fas fa-desktop" />
-                <a href=""> Компьютеры</a>                
-            </li>
+                <li className="aside__item">
+                    <i className="icon fas fa-users" />
+                    <a href="">Доступные мне</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon fas fa-users" />
-                <a href="">Доступные мне</a>
-            </li>
+                <li className="aside__item">
+                    <i className="icon far fa-clock" />
+                    <a href="">Недавние</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon far fa-clock" />
-                <a href="">Недавние</a>
-            </li>
+                <li className="aside__item">
+                    <i className="icon fas fa-star" />
+                    <a href="">Помеченные</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon fas fa-star" />
-                <a href="">Помеченные</a>
-            </li>
+                <li className="aside__item">
+                    <i className="icon fas fa-trash" />
+                    <a href="">Корзина</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon fas fa-trash" />
-                <a href="">Корзина</a>
-            </li>
+                <li className="aside__item">
+                    <i className="icon fas fa-cloud" />
+                    <a href="">Резервные копии</a>
+                </li>
 
-            <li className="aside__item">
-                <i className="icon fas fa-cloud" />
-                <a href="">Резервные копии</a>
-            </li>
-
-            <li className="aside__item">
-                <i className="icon fas fa-cloud-download-alt" />
-                <a href="">Хранилище</a>
-            </li>
-
-        </ul>
-    </aside>
-    )
-} 
+                <li className="aside__item">
+                    <i className="icon fas fa-cloud-download-alt" />
+                    <a href="">Хранилище</a>
+                </li>
+            </ul>
+        </aside>
+    );
+};
 
 MainMenu.propTypes = {
     dispatch: PropTypes.func,
     showBackground: PropTypes.bool,
-    file: PropTypes.object
-}
+    activePageType: PropTypes.string
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        showBackground: state.modalStore.showBackground, 
+        showBackground: state.modalStore.showBackground,
         openSelect: state.modalStore.openSelect,
-        file: state.fileStore.file
+        activePageType: state.pageStore.activePageType
     };
-}
+};
 
 export default connect(mapStateToProps)(MainMenu);
