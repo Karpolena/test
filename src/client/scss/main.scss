@@ -136,6 +136,12 @@ svg {
     }
     &__list {
         padding-top: 20px; 
+        &--disabled {
+            .aside__item, a, i {
+                color: #c7c7c7;
+                cursor: default;
+            }
+        }
     }
     &__item {
         font-size: 0.9em;

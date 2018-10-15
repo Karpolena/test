@@ -35,10 +35,10 @@ class ActionPanelSection extends Component {
         if (!this.props.activeFile && !this.props.activeFolder) {
             className.push("none");
         }
-       let title = "";
-       if (this.props.context) {
-           title = this.props.folder.title 
-       }
+        let title = "";
+        if (this.props.contextElement) {
+            title = this.props.contextElement.title;
+        }
         return (
             <header className="header line">
                 <div className="header-left">
@@ -59,9 +59,7 @@ class ActionPanelSection extends Component {
 ActionPanelSection.propTypes = {
     activeFile: PropTypes.string,
     activeFolder: PropTypes.string,
-    context: PropTypes.string,
-    file: PropTypes.object,
-    folder: PropTypes.object
+    contextElement: PropTypes.object
 };
 
 export default ActionPanelSection;

@@ -11,6 +11,11 @@ const MainMenu = props => {
     if (props.activePageType === TYPE.FILE) {
         className.push("none");
     }
+
+    const preventClick = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <aside className={className.join(" ")}>
             <button
@@ -27,45 +32,45 @@ const MainMenu = props => {
                     props.dispatch(ModalActions.closeModal());
                 }}
             />
-            <ul className="aside__list">
+            <ul className="aside__list aside__list--disabled">
                 <li className="aside__item">
                     <i className="icon fab fa-google-drive" />
-                    <a href="">Мой диск</a>
+                    <a href="" onClick={preventClick}>Мой диск</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-desktop" />
-                    <a href=""> Компьютеры</a>
+                    <a href="" onClick={preventClick}> Компьютеры</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-users" />
-                    <a href="">Доступные мне</a>
+                    <a href="" onClick={preventClick}>Доступные мне</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon far fa-clock" />
-                    <a href="">Недавние</a>
+                    <a href="" onClick={preventClick}>Недавние</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-star" />
-                    <a href="">Помеченные</a>
+                    <a href="" onClick={preventClick}>Помеченные</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-trash" />
-                    <a href="">Корзина</a>
+                    <a href="" onClick={preventClick}>Корзина</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-cloud" />
-                    <a href="">Резервные копии</a>
+                    <a href="" onClick={preventClick}>Резервные копии</a>
                 </li>
 
                 <li className="aside__item">
                     <i className="icon fas fa-cloud-download-alt" />
-                    <a href="">Хранилище</a>
+                    <a href="" onClick={preventClick}>Хранилище</a>
                 </li>
             </ul>
         </aside>

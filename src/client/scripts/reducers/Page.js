@@ -12,6 +12,7 @@ class Page {
         ...{
             context: this.context,
             fetching: this.fetching,
+            contextElement: this.contextElement,
             activePageType: this.activePageType
         }
     });
