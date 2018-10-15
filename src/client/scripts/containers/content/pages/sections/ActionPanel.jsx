@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class ActionPanelSection extends PureComponent {
+class ActionPanelSection extends Component {
     clickHandler = () => {
         /* this.props. activeFolder 
         ? 

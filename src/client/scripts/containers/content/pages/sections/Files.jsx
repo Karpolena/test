@@ -1,10 +1,10 @@
-import React, { PureComponent, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import * as ActiveActions from "../../../../actions/Active";
 
 import FileCard from "../../../../components/FileCard";
 
-class FilesSection extends PureComponent {
+class FilesSection extends Component {
     renderFiles = folders => {
         let _folders = [];
         folders.forEach(itm => {

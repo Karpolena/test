@@ -34,7 +34,7 @@ export default ({models, validation}) => {
                 let file = await models.Files.findById(_context);
                 if(file) {
                     res.status(200).json({
-                        context: models.Response.File(file)
+                        contextElement: models.Response.File(file)
                     });
                 } else {
                     res.status(404).json({
@@ -81,7 +81,7 @@ export default ({models, validation}) => {
                 res.status(200).json({
                     files: files ? models.Response.Files(files) : [], 
                     folders: folders ? models.Response.Folders(folders) : [],
-                    context: models.Response.Folder(contextFolder)
+                    contextElement: models.Response.Folder(contextFolder)
                 }) 
             } catch(err) {
                 res.status(500).json(err);

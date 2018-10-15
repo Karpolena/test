@@ -1,4 +1,5 @@
-export const FILE = {
+export const FILE_CONSTANTS = {
     CREATE_FILE: "CREATE_FILE", 
-    REMOVE_FILE: "REMOVE_FILE"
+    REMOVE_FILE: "REMOVE_FILE",
+    UPDATE_FILE: "UPDATE_FILE"
 }

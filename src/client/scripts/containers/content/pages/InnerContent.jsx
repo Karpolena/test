@@ -82,10 +82,10 @@ class InnerContent extends Component {
     }
 }
 
-const mapStateToProps = ({ pageStore, activeStore }) => {
+const mapStateToProps = ({ pageStore, activeStore, folderStore, fileStore }) => {
     return {
-        folders: pageStore.folders,
-        files: pageStore.files,
+        folders: folderStore.folders,
+        files: fileStore.files,
         context: pageStore.context,
         fetching: pageStore.fetching,
         activeFile: activeStore.activeFile,

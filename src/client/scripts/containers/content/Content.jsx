@@ -13,6 +13,7 @@ const Content = () => {
                 <Route exact path="/" component={InnerContent}/>
                 <Route path="/folder/:id" component={InnerContent}/>
                 <Route path="/file/:id" component={InnerFile} />
+                <Route path="/not-found" component={NotFound}/>
                 <Route path="*" component={NotFound}/>
             </Switch>
         </content>

@@ -16,12 +16,10 @@ export default () => {
         required: true
       },
       content: {
-        type: String,
-        required: true
+        type: String
       },
       descriptions: {
-        type: String,
-        required: true
+        type: String
       },
       create: {
         type: Date,

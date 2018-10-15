@@ -1,11 +1,20 @@
-import { FILE } from "../constants/File";
+import axios from "axios";
+import { FILE_CONSTANTS } from "../constants/File";
+import * as ModalActions from "./Modal";
 
-export const createFile = (file) => {
-    return {
-        type: FILE.CREATE_FILE,
-        payload: file
-    }
-}
+export const createFile = file => dispatch => {
+    axios
+        .post("api/create-file", file)
+        .then(response => {
+            dispatch({
+                type: FILE_CONSTANTS.CREATE_FILE,
+                payload: response.data
+            });
+        })
+        .catch(error => console.log(error));
+    dispatch(ModalActions.closeModal());
+};
+
 
 
 
@@ -15,8 +24,6 @@ export const createFile = (file) => {
 import { FILE } from "../constants/File"; */
 
 // import * as FileApi from "../api/actions/File";
-
-
 
 /* export const addFile = (file) => {
     return {
@@ -101,18 +108,11 @@ export const getFileId = (id) => {
 //     }
 // }
 
-
 // export const fetchFileFailed = () => {
 //     return {
 //         type: FILE.FETCH_FILE_FAILED
-//     }    
+//     }
 // }
-
-
-
-
-
-
 
 // export const getFiles = () => (dispatch) => {
 //     FileApi.getFiles()
@@ -136,4 +136,3 @@ export const getFileId = (id) => {
 //         history.push("/not-found")
 //     })
 // }
-

@@ -15,8 +15,7 @@ export default () => {
         type: String
       },
       descriptions: {
-        type: String,
-        required: true
+        type: String
       },
       elements: {
         type: Array,
