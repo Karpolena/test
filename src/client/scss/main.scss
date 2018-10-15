@@ -172,27 +172,39 @@ svg {
     position: absolute;
     left: calc(50% - 175px);
     top: 30%;
-    padding: 20px;
-    &__content {
+    padding: 30px;
+    &__form {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }   
     &__input {
-        width: 80%;
+        width: inherit;
         background-color: $light-grey;
         padding: 10px;
-        margin: 10px;
+        margin: 20px;
         font: 1em $roboto;
         color: $grey;
-        outline: none;        
+        outline: none;
+        border-radius: 5px;        
+    }
+    &__textarea {
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    textarea {
+        border: none;
     }
 }
+
 .create {
-    width: 60%;
-    height: 80%;
-    left: 20%;
+    width: 50%;
+    left: 25%;
     top: 10%;
 }
 

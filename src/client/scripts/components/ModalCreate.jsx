@@ -12,109 +12,84 @@ import * as FolderActions from "../actions/Folder";
 
 class ModalCreate extends Component {
     state = {
-        id: "",
         title: "",
-        data: "",
-        content: ""
+        content: "",
+        descriptions: ""
     }
-    onChangeId = (event) => {
+    
+    handleInputChange = e => {
         this.setState({
-            id: event.target.value
+            [e.target.name]: e.target.value
         })
     }
-    onChangeTitle = (event) => {
-        this.setState({
-            title: event.target.value
-        })
-    }
-    onChangeData = (event) => {
-        this.setState({
-            data: event.target.value
-        })
-    }
-    onChangeContent = (event) => {
-        this.setState({
-            content: event.target.value
-        })
-    }
+   
     onCreateFolder = () => {
-        const folder = {
-            id: this.state.id,
-            title: this.state.title,
-            data: this.state.data,
-            content: this.state.content
-        }
-        // axios.post("https://test-17409.firebaseio.com/folders.json", folder)
-        //     .then(() => {
-        //         this.props.dispatch(FolderActions.addFolder(folder))
-        //     })
-        //     .catch(error => console.log(error));
-
-
-
-        axios.post("create-folder", {type: "folder"})
-        .then(() => {
-            this.props.dispatch(FolderActions.addFolder(folder))
+        axios.post("api/create-folder", {title: this.state.title, descriptions: this.state.descriptions, context: this.props.context})
+        .then((response) => {
+            this.props.dispatch(FolderActions.createFolder(response.data)) 
+            console.log(response.data)         
         })
         .catch(error => console.log(error));
-
-        
-            
-        this.props.dispatch(ModalActions.closeModal())
+            console.log(this.props.context)            
+            this.props.dispatch(ModalActions.closeModal())
     }
 
     onCreateFile = () => {
-        const file = {
-            id: this.state.id,
-            title: this.state.title,
-            data: this.state.data,
-            content: this.state.content
-        }
-        axios.post("https://test-17409.firebaseio.com/files.json", file)
-            .then(() => {
-                this.props.dispatch(FileActions.addFile(file))
-            })
-            .catch(error => console.log(error));
-            
-        this.props.dispatch(ModalActions.closeModal());       
+        axios.post("api/create-file", {title: this.state.title, descriptions: this.state.descriptions, content: this.state.content, context: this.props.context})
+        .then((response) => {
+            this.props.dispatch(FileActions.createFile(response.data)) 
+            console.log(response.data)         
+        })
+        .catch(error => console.log(error));
+            console.log(this.props.context)            
+            this.props.dispatch(ModalActions.closeModal())  
     }
-   
+    
+    renderContentField = () => {
+        let { folderType } = this.props;
+        if (!folderType) {
+            return (
+                <div className="modal__textarea">
+                    <label>Content</label>
+                    <textarea 
+                        className="modal__input" 
+                        type="text" 
+                        name="content"
+                        placeholder="content"
+                        rows="10"
+                        value={this.state.content}
+                        onChange={this.handleInputChange} />
+                </div>
+            )
+        } 
+    }
     render() {
         return (
             <div>
                 <Card className="modal create" style={{ display:  this.props.show ? "block" : "none" }}>
-                    <CardContent className="modal__content">
-                        {/* <input 
-                            className="modal__input" 
-                            type="text" 
-                            placeholder="id" 
-                            value={this.state.id}
-                            onChange={this.onChangeId}/> */}
-                        <label>Title</label>
-                        <input 
-                            className="modal__input" 
-                            type="text" 
-                            placeholder="title"
-                            value={this.state.title}
-                            onChange={this.onChangeTitle}/>
-                        <label>Data</label>
-                        <input 
-                            className="modal__input" 
-                            type="text" 
-                            placeholder="data"
-                            value={this.state.data}
-                            onChange={this.onChangeData} />
-                        <label>Content</label>
-                        <textarea 
-                            className="modal__input" 
-                            type="text" 
-                            placeholder="content"
-                            rows="10"
-                            value={this.state.content}
-                            onChange={this.onChangeContent} />                           
-                        <Button onClick={this.props.folderType ? this.onCreateFolder : this.onCreateFile}>                       
-                            Создать
-                        </Button>
+                    <CardContent >
+                        <form className="modal__form" >                       
+                            <label>Title</label>
+                            <input 
+                                className="modal__input" 
+                                type="text"
+                                name="title" 
+                                placeholder="title"
+                                value={this.state.title}
+                                onChange={this.handleInputChange}/>
+                            <label>Descriptions</label>
+                            <input 
+                                className="modal__input" 
+                                type="text"
+                                name="descriptions" 
+                                placeholder="descriptions"
+                                value={this.state.descriptions}
+                                onChange={this.handleInputChange}/>
+                            {this.renderContentField()}
+                            <Button type="submit" onClick={this.props.folderType ? this.onCreateFolder : this.onCreateFile}> 
+                                Создать
+                            </Button>
+                        </form>
                     </CardContent>        
                 </Card>
             </div>
@@ -128,13 +103,15 @@ ModalCreate.propTypes = {
 openCreate: PropTypes.bool,
 show: PropTypes.bool,
 folderType: PropTypes.bool,
-dispatch: PropTypes.func
+dispatch: PropTypes.func,
+context: PropTypes.string 
 }
 
 const mapStateToProps = (state) => { 
     return {
         folderType: state.modalStore.folderType,
-        fileType: state.modalStore.fileType
+        fileType: state.modalStore.fileType,
+        context: state.pageStore.context
     }
 }
 

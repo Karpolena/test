@@ -1,3 +1,14 @@
+import { FOLDER } from "../constants/Folder";
+
+export const createFolder = (folder) => {
+    return {
+        type: FOLDER.CREATE_FOLDER,
+        payload: folder
+    }
+}
+
+
+
 /* import axios from "axios";
 
 import { FOLDER } from "../constants/Folder"; */

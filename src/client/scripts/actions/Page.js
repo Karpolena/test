@@ -10,7 +10,7 @@ export const getPage = options => dispatch => {
     PageApi.getPage(options).then(payload => {
         dispatch({
             type: PAGE_CONSTANTS.SET_PAGE,
-            payload: { ...payload, activePageType: options.type }
+            payload: { ...payload, activePageType: options.type, context: options.context}
         });
     });
 };

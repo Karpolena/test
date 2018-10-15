@@ -1,3 +1,13 @@
+import { FILE } from "../constants/File";
+
+export const createFile = (file) => {
+    return {
+        type: FILE.CREATE_FILE,
+        payload: file
+    }
+}
+
+
 
 /* import axios from "axios";
 

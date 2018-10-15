@@ -10,7 +10,7 @@ import ActionPanelSection from "./sections/ActionPanel";
 import FoldersSection from "./sections/Folders";
 import FilesSection from "./sections/Files";
 
-class InnerFolder extends Component {
+class InnerContent extends Component {
     componentDidMount() {
         let { match, dispatch } = this.props;
         dispatch(ActiveActions.removeActive());
@@ -93,11 +93,11 @@ const mapStateToProps = ({ pageStore, activeStore }) => {
     };
 };
 
-InnerFolder.propTypes = {
+InnerContent.propTypes = {
     dispatch: PropTypes.func,
     folders: PropTypes.object,
     files: PropTypes.object,
-    context: PropTypes.object,
+    context: PropTypes.string,
     match: PropTypes.object,
     history: PropTypes.object,
     fetching: PropTypes.bool,
@@ -105,4 +105,4 @@ InnerFolder.propTypes = {
     activeFolder: PropTypes.string
 };
 
-export default connect(mapStateToProps)(InnerFolder);
+export default connect(mapStateToProps)(InnerContent);
