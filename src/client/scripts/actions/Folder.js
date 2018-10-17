@@ -15,6 +15,19 @@ export const createFolder = folder => dispatch => {
     dispatch(ModalActions.closeModal());
 };
 
+export const removeFolder = id => dispatch => {
+    axios
+    .delete("api/remove-folder/:" + id)
+    .then(response => {
+        dispatch({
+            type: FOLDER_CONSTANTS.REMOVE_FOLDER,
+            payload: response.data
+        });
+        console.log(response)
+    })
+    .catch(error => console.log(error));
+}
+
 
 
 

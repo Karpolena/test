@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import * as FolderActions from "../../../../actions/Folder";
+import * as FileActions from "../../../../actions/File";
+
 class ActionPanelSection extends Component {
-    clickHandler = () => {
-        /* this.props. activeFolder 
+    removeHandler = () => {
+        this.props.activeFolder 
         ? 
-        () =>  this.props.dispatch(FolderActions.deleteFolderId(this.props.activeFolder))
+        this.props.dispatch(FolderActions.removeFolder(this.props.activeFolder))
         :
-        () =>  this.props.dispatch(FileActions.deleteFileId(this.props.activeFile)) */
+        this.props.dispatch(FileActions.removeFile(this.props.activeFile)) 
     };
 
     renderEditButton = () => {
@@ -23,7 +26,7 @@ class ActionPanelSection extends Component {
     renderRemoveButton = () => {
         return (
             <li title="Удалить">
-                <button className="nav-tools__btn" onClick={this.clickHandler}>
+                <button className="nav-tools__btn" onClick={this.removeHandler}>
                     <i className="icon fas fa-trash" />
                 </button>
             </li>
@@ -59,7 +62,8 @@ class ActionPanelSection extends Component {
 ActionPanelSection.propTypes = {
     activeFile: PropTypes.string,
     activeFolder: PropTypes.string,
-    contextElement: PropTypes.object
+    contextElement: PropTypes.object,
+    dispatch: PropTypes.func
 };
 
 export default ActionPanelSection;

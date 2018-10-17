@@ -15,6 +15,19 @@ export const createFile = file => dispatch => {
     dispatch(ModalActions.closeModal());
 };
 
+export const removeFile = id => dispatch => {
+    axios
+    .delete("api/remove-file/:" + id)
+    .then(response => {
+        dispatch({
+            type: FILE_CONSTANTS.REMOVE_FILE,
+            payload: response.data
+        });
+        console.log(response)
+    })
+    .catch(error => console.log(error));
+}
+
 
 
 

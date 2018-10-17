@@ -31,6 +31,7 @@ class InnerContent extends Component {
                 activeFile={this.props.activeFile}
                 activeFolder={this.props.activeFolder}
                 contextElement={this.props.contextElement}
+                dispatch={this.props.dispatch}
             />
         );
     };
