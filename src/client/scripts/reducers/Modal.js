@@ -7,7 +7,8 @@ let initialState = {
     openSelect: false,
     openCreate: false,
     fileType: false,
-    folderType: true
+    folderType: true,
+    updateMode: false
 }
 
 
@@ -34,7 +35,8 @@ const closeModal = (state) => {
         ...state,
         showBackground: false,
         openSelect: false,
-        openCreate: false
+        openCreate: false,
+        updateMode: false
     }
 }
 
@@ -54,6 +56,12 @@ const setTypeFile = (state) => {
     }
 }
 
+const setModeUpdate = (state) => {
+    return {
+        ...state,
+        updateMode: true
+    }
+}
 
 
 const modalReducer = (state = initialState, action) => {
@@ -68,6 +76,8 @@ const modalReducer = (state = initialState, action) => {
             return setTypeFolder(state);
         case MODAL.SET_TYPE_FILE:
             return setTypeFile(state);
+        case MODAL.SET_MODE_UPDATE:
+            return setModeUpdate(state);
         default:
             return state;
     }

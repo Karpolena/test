@@ -58,7 +58,7 @@ class InnerFile extends Component {
                             <ul className="nav-tools">
                                 <li title="Редактировать">
                                     <button className="nav-tools__btn">
-                                        <i className="icon fas fa-save" />
+                                        <i className="icon fas fa-edit" />
                                     </button>
                                 </li>
                             </ul>

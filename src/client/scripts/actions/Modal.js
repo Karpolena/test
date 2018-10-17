@@ -31,3 +31,9 @@ export const setTypeFile = () => {
         type: MODAL.SET_TYPE_FILE
     }
 }
+
+export const setModeUpdate = () => {
+    return {
+        type: MODAL.SET_MODE_UPDATE
+    }
+}

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import * as FolderActions from "../../../../actions/Folder";
 import * as FileActions from "../../../../actions/File";
+import * as ModalActions from "../../../../actions/Modal";
 
 class ActionPanelSection extends Component {
     removeHandler = () => {
@@ -12,11 +13,16 @@ class ActionPanelSection extends Component {
         :
         this.props.dispatch(FileActions.removeFile(this.props.activeFile)) 
     };
-
-    renderEditButton = () => {
+    updateHandler = () => {
+        this.props.dispatch(ModalActions.openModalCreate());
+        this.props.dispatch(ModalActions.setModeUpdate());
+    }
+    
+    renderUpdateButton = () => {
         return (
             <li title="Редактировать">
-                <button className="nav-tools__btn">
+                <button className="nav-tools__btn"
+                onClick={this.updateHandler}>
                     <i className="icon fas fa-edit" />
                 </button>
             </li>
@@ -50,7 +56,7 @@ class ActionPanelSection extends Component {
                 </div>
                 <nav className={className.join(" ")}>
                     <ul className="nav-tools">
-                        {this.renderEditButton()}
+                        {this.renderUpdateButton()}
                         {this.renderRemoveButton()}
                     </ul>
                 </nav>

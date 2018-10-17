@@ -11,9 +11,21 @@ import * as FolderActions from "../actions/Folder";
 class ModalCreate extends Component {
     state = {
         title: "",
-        content: "",
         descriptions: ""
     };
+
+    
+    // file = {
+    //     title: this.state.title,
+    //     descriptions: this.state.descriptions,
+    //     context: this.props.context
+    // }
+
+    // folder = {
+    //     title: this.state.title,
+    //     descriptions: this.state.descriptions,
+    //     context: this.props.context
+    // }
 
     handleInputChange = e => {
         this.setState({
@@ -22,7 +34,8 @@ class ModalCreate extends Component {
     };
 
     onCreateFolder = () => {
-        this.props.createFolder({
+        // this.props.createFolder (this.folder); 
+        this.props.createFolder ({
             title: this.state.title,
             descriptions: this.state.descriptions,
             context: this.props.context
@@ -33,37 +46,53 @@ class ModalCreate extends Component {
         this.props.createFile({
             title: this.state.title,
             descriptions: this.state.descriptions,
-            content: this.state.content,
             context: this.props.context
         });
     };
 
-    // renderContentField = () => {
-    //     let { folderType } = this.props;
-    //     if (!folderType) {
-    //         return (
-    //             <div className="form__textarea">
-    //                 <label>Content</label>
-    //                 <textarea
-    //                     className="form__input"
-    //                     type="text"
-    //                     name="content"
-    //                     placeholder="content"
-    //                     rows="10"
-    //                     value={this.state.content}
-    //                     onChange={this.handleInputChange}
-    //                 />
-    //             </div>
-    //         );
-    //     }
-    // };
+    onUpdateFolder = () => {
+        this.props.updateFolder(
+            {title: this.state.title,
+            descriptions: this.state.descriptions,
+            context: this.props.context},
+            this.props.activeFolder
+        );
+    };
 
-    onSubmit = e => {
+    onUpdateFile = () => {
+        this.props.updateFile(
+            {title: this.state.title,
+            descriptions: this.state.descriptions,
+            context: this.props.context},
+            this.props.activeFile
+        );
+    };
+
+    renderButton = () => {
+        let { updateMode } = this.props;        
+        return (
+            updateMode 
+            ?
+            <Button type="submit" onClick={this.onUpdateSubmit}>Редактировать</Button>
+            : 
+            <Button type="submit" onClick={this.onCreateSubmit}>Создать</Button>
+        )
+    }
+
+    onCreateSubmit = e => {
         e.preventDefault();
         if (this.props.folderType) {
             return this.onCreateFolder();
         }
         this.onCreateFile();
+    };
+
+    onUpdateSubmit = e => {
+        e.preventDefault();
+        if (this.props.folderType) {
+            return this.onUpdateFolder();
+        }
+        this.onUpdateFile();
     };
 
     render() {
@@ -74,7 +103,7 @@ class ModalCreate extends Component {
                     style={{ display: this.props.show ? "block" : "none" }}
                 >
                     <CardContent>
-                        <form className="form" onSubmit={this.onSubmit}>
+                        <form className="form" /* onSubmit={this.onSubmit}*/>
                             <label>Title</label>
                             <input
                                 className="form__input"
@@ -93,8 +122,7 @@ class ModalCreate extends Component {
                                 value={this.state.descriptions}
                                 onChange={this.handleInputChange}
                             />
-                            {/* {this.renderContentField()} */}
-                            <Button type="submit">Создать</Button>
+                            { this.renderButton() }
                         </form>
                     </CardContent>
                 </Card>
@@ -110,14 +138,22 @@ ModalCreate.propTypes = {
     dispatch: PropTypes.func,
     context: PropTypes.string,
     createFile: PropTypes.func,
-    createFolder: PropTypes.func
+    createFolder: PropTypes.func,
+    updateFile: PropTypes.func,
+    updateFolder: PropTypes.func,
+    updateMode: PropTypes.bool,
+    activeFile: PropTypes.string,
+    activeFolder: PropTypes.string
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ({modalStore, pageStore, activeStore}) => {
     return {
-        folderType: state.modalStore.folderType,
-        fileType: state.modalStore.fileType,
-        context: state.pageStore.context
+        folderType: modalStore.folderType,
+        fileType: modalStore.fileType,
+        context: pageStore.context,
+        updateMode: modalStore.updateMode,
+        activeFile: activeStore.activeFile,
+        activeFolder: activeStore.activeFolder
     };
 };
 
@@ -125,6 +161,8 @@ export default connect(
     mapStateToProps,
     {
         createFolder: FolderActions.createFolder,
-        createFile: FileActions.createFile
+        createFile: FileActions.createFile,
+        updateFolder: FolderActions.updateFolder,
+        updateFile: FileActions.updateFile
     }
 )(ModalCreate);

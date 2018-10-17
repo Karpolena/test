@@ -44,9 +44,7 @@ class Folder {
         this.folders = new Map([...this.folders, ...newFolder]);
     };
 
-    removeFolder = id => {
-        this.folders = this.folders.filter(itm => itm.id !== id)
-    }
+   
 }
 
 const folder = new Folder();
@@ -64,6 +62,9 @@ export default (state = folder.getState(), action) => {
             break;
         case FOLDER_CONSTANTS.REMOVE_FOLDER:
             folder.removeFolder(action.payload);
+            break;
+        case FOLDER_CONSTANTS.UPDATE_FOLDER:
+            folder.updateFolder(action.payload);
             break;
         default:
             return state;

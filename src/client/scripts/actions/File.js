@@ -17,7 +17,7 @@ export const createFile = file => dispatch => {
 
 export const removeFile = id => dispatch => {
     axios
-    .delete("api/remove-file/:" + id)
+    .delete("api/remove-file/" + id)
     .then(response => {
         dispatch({
             type: FILE_CONSTANTS.REMOVE_FILE,
@@ -27,6 +27,19 @@ export const removeFile = id => dispatch => {
     })
     .catch(error => console.log(error));
 }
+
+export const updateFile = ({ file, id }) => dispatch => {
+    axios
+        .put("api/update-file/" + id, file)
+        .then(response => {
+            dispatch({
+                type: FILE_CONSTANTS.UPDATE_FILE,
+                payload: response.data
+            });
+        })
+        .catch(error => console.log(error));
+    dispatch(ModalActions.closeModal());
+};
 
 
 

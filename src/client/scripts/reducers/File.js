@@ -43,9 +43,15 @@ class File {
         this.files = new Map([...this.files, ...newFile]);
     };
 
-    removeFile = id => {
-        this.files = this.files.filter(itm => itm.id !== id)
-    }
+    // removeFile = id => {
+    //     this.files = this.files.filter(itm => itm.id !== id)
+    // };
+
+
+    // updateFile = ({file, id}) => {
+        
+
+    // };
 }
 
 const file = new File();
@@ -63,6 +69,9 @@ export default (state = file.getState(), action) => {
             break;
         case FILE_CONSTANTS.REMOVE_FILE:
             file.removeFile(action.payload);
+            break;
+        case FILE_CONSTANTS.UPDATE_FILE:
+            file.updateFile(action.payload);
             break;
         default:
             return state;
