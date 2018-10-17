@@ -13,6 +13,7 @@ class ActionPanelSection extends Component {
         :
         this.props.dispatch(FileActions.removeFile(this.props.activeFile)) 
     };
+
     updateHandler = () => {
         this.props.dispatch(ModalActions.openModalCreate());
         this.props.dispatch(ModalActions.setModeUpdate());

@@ -44,7 +44,15 @@ class Folder {
         this.folders = new Map([...this.folders, ...newFolder]);
     };
 
-   
+    removeFolder = (payload) => {
+        this.folders.delete(payload.id)
+        this.folders = new Map([...this.folders]);
+    }
+
+    updateFolder = (folder) => {
+        this.folders.set(folder.id, folder);
+        this.folders = new Map([...this.folders]);
+    }
 }
 
 const folder = new Folder();

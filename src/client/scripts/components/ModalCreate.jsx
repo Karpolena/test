@@ -14,7 +14,6 @@ class ModalCreate extends Component {
         descriptions: ""
     };
 
-    
     // file = {
     //     title: this.state.title,
     //     descriptions: this.state.descriptions,
@@ -34,8 +33,8 @@ class ModalCreate extends Component {
     };
 
     onCreateFolder = () => {
-        // this.props.createFolder (this.folder); 
-        this.props.createFolder ({
+        // this.props.createFolder (this.folder);
+        this.props.createFolder({
             title: this.state.title,
             descriptions: this.state.descriptions,
             context: this.props.context
@@ -52,32 +51,38 @@ class ModalCreate extends Component {
 
     onUpdateFolder = () => {
         this.props.updateFolder(
-            {title: this.state.title,
-            descriptions: this.state.descriptions,
-            context: this.props.context},
+            {
+                title: this.state.title,
+                descriptions: this.state.descriptions,
+                context: this.props.context
+            },
             this.props.activeFolder
         );
     };
 
     onUpdateFile = () => {
         this.props.updateFile(
-            {title: this.state.title,
-            descriptions: this.state.descriptions,
-            context: this.props.context},
+            {
+                title: this.state.title,
+                descriptions: this.state.descriptions,
+                context: this.props.context
+            },
             this.props.activeFile
         );
     };
 
     renderButton = () => {
-        let { updateMode } = this.props;        
-        return (
-            updateMode 
-            ?
-            <Button type="submit" onClick={this.onUpdateSubmit}>Редактировать</Button>
-            : 
-            <Button type="submit" onClick={this.onCreateSubmit}>Создать</Button>
-        )
-    }
+        let { updateMode } = this.props;
+        return updateMode ? (
+            <Button type="submit" onClick={this.onUpdateSubmit}>
+                Редактировать
+            </Button>
+        ) : (
+            <Button type="submit" onClick={this.onCreateSubmit}>
+                Создать
+            </Button>
+        );
+    };
 
     onCreateSubmit = e => {
         e.preventDefault();
@@ -122,7 +127,7 @@ class ModalCreate extends Component {
                                 value={this.state.descriptions}
                                 onChange={this.handleInputChange}
                             />
-                            { this.renderButton() }
+                            {this.renderButton()}
                         </form>
                     </CardContent>
                 </Card>
@@ -146,7 +151,7 @@ ModalCreate.propTypes = {
     activeFolder: PropTypes.string
 };
 
-const mapStateToProps = ({modalStore, pageStore, activeStore}) => {
+const mapStateToProps = ({ modalStore, pageStore, activeStore }) => {
     return {
         folderType: modalStore.folderType,
         fileType: modalStore.fileType,
