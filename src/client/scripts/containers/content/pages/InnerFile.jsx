@@ -47,7 +47,7 @@ class InnerFile extends Component {
         let { dispatch } = this.props;
         dispatch( FileActions.updateFile(
             { content: this.state.content },
-            this.props.activeFile
+            this.props.contextElement.id
             )
         )
     };
@@ -95,10 +95,10 @@ class InnerFile extends Component {
     }
 }
 
-const mapStateToProps = ({ fileStore, activeStore }) => {
+const mapStateToProps = ({ fileStore, pageStore }) => {
     return {
         file: fileStore.file,
-        activeFile: activeStore.activeFile
+        contextElement: pageStore.contextElement
     };
 };
 
@@ -107,7 +107,7 @@ InnerFile.propTypes = {
     dispatch: PropTypes.func,
     match: PropTypes.object,
     history: PropTypes.object,
-    activeFile: PropTypes.string,
+    contextElement: PropTypes.object,
     updateFile: PropTypes.func,
 };
 
