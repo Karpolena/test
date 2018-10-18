@@ -209,6 +209,11 @@ svg {
     textarea {
         border: none;
         background: #ffffff;
+    }
+    &__radio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     } 
 } 
 
