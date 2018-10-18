@@ -14,18 +14,6 @@ class ModalCreate extends Component {
         descriptions: ""
     };
 
-    // file = {
-    //     title: this.state.title,
-    //     descriptions: this.state.descriptions,
-    //     context: this.props.context
-    // }
-
-    // folder = {
-    //     title: this.state.title,
-    //     descriptions: this.state.descriptions,
-    //     context: this.props.context
-    // }
-
     handleInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -33,20 +21,23 @@ class ModalCreate extends Component {
     };
 
     onCreateFolder = () => {
-        // this.props.createFolder (this.folder);
-        this.props.createFolder({
-            title: this.state.title,
-            descriptions: this.state.descriptions,
-            context: this.props.context
-        });
+        this.props.createFolder(            
+            {
+                title: this.state.title,
+                descriptions: this.state.descriptions,
+                context: this.props.context
+            }
+        );
     };
 
     onCreateFile = () => {
-        this.props.createFile({
-            title: this.state.title,
-            descriptions: this.state.descriptions,
-            context: this.props.context
-        });
+        this.props.createFile(
+            {
+                title: this.state.title,
+                descriptions: this.state.descriptions,
+                context: this.props.context
+            }
+        );
     };
 
     onUpdateFolder = () => {

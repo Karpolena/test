@@ -43,15 +43,15 @@ class File {
         this.files = new Map([...this.files, ...newFile]);
     };
 
-    // removeFile = id => {
-    //     this.files = this.files.filter(itm => itm.id !== id)
-    // };
+    removeFile = (payload) => {
+        this.files.delete(payload.id)
+        this.files = new Map([...this.files]);
+    }
 
-
-    // updateFile = ({file, id}) => {
-        
-
-    // };
+    updateFile = (file) => {
+        this.files.set(file.id, file);
+        this.files = new Map([...this.files]);
+    }
 }
 
 const file = new File();

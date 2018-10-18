@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 /* import * as FileActions from "../../../actions/File"; */
 import * as ActiveActions from "./../../../actions/Active";
 import * as PageActions from "./../../../actions/Page";
+import * as FileActions from "./../../../actions/File";
 import { TYPE } from "./../../../constants/Page";
 
 class InnerFile extends Component {
@@ -42,10 +43,18 @@ class InnerFile extends Component {
         });
     };
 
+    onSaveFile = () => {
+        let { dispatch } = this.props;
+        dispatch( FileActions.updateFile(
+            { content: this.state.content },
+            this.props.activeFile
+            )
+        )
+    };
+
     render() {
         let { file } = this.props;
         let innerFile = <p>... Загрузка</p>;
-        // if (!file || file.id !==this.props.match.params.id) return null;
         if (file) {
             innerFile = (
                 <div className="inner">
@@ -57,8 +66,12 @@ class InnerFile extends Component {
                         <nav className="nav">
                             <ul className="nav-tools">
                                 <li title="Редактировать">
-                                    <button className="nav-tools__btn">
-                                        <i className="icon fas fa-edit" />
+                                    <button 
+                                        className="nav-tools__btn" 
+                                        type="submit" 
+                                        onClick={this.onSaveFile}
+                                    >
+                                            <i className="icon fas fa-save" />
                                     </button>
                                 </li>
                             </ul>
@@ -82,9 +95,10 @@ class InnerFile extends Component {
     }
 }
 
-const mapStateToProps = ({ fileStore }) => {
+const mapStateToProps = ({ fileStore, activeStore }) => {
     return {
-        file: fileStore.file
+        file: fileStore.file,
+        activeFile: activeStore.activeFile
     };
 };
 
@@ -92,7 +106,9 @@ InnerFile.propTypes = {
     file: PropTypes.object,
     dispatch: PropTypes.func,
     match: PropTypes.object,
-    history: PropTypes.object
+    history: PropTypes.object,
+    activeFile: PropTypes.string,
+    updateFile: PropTypes.func,
 };
 
 export default connect(mapStateToProps)(InnerFile);
