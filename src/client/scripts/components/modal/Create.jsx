@@ -5,6 +5,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import * as ModalActions from "./../../actions/Modal";
 
 const styles = () => ({
     container: {
@@ -64,7 +65,7 @@ class CreateModal extends Component {
                         label="descriptions"
                         name="descriptions"
                         multiline
-                        rows="1"
+                        rows="3"
                         className={classes.textField}
                         value={this.state.descriptions}
                         onChange={this.onChange}
@@ -73,9 +74,24 @@ class CreateModal extends Component {
                     />
                 </form>
                 <div className={classes.controls}>
-                    <Button className={classes.button}>Отмена</Button>
-                    <Button color="primary" className={classes.button}>
-                        Создать
+                    <Button
+                        className={classes.button}
+                        onClick={this.props.dispatch.bind(
+                            this,
+                            ModalActions.close()
+                        )}
+                    >
+                        Отмена
+                    </Button>
+                    <Button
+                        color="primary"
+                        className={classes.button}
+                        onClick={() => {
+                            this.props.dispatch(ModalActions.close());
+                            this.props.onSubmit(this.state);
+                        }}
+                    >
+                        {this.props.submitText}
                     </Button>
                 </div>
             </Fragment>
@@ -83,11 +99,18 @@ class CreateModal extends Component {
     }
 }
 
+CreateModal.defaultProps = {
+    submitText: "Создать"
+};
+
 CreateModal.propTypes = {
     dispatch: PropTypes.func,
     onSubmit: PropTypes.func,
     title: PropTypes.string,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    submitText: PropTypes.string
 };
+
+export {CreateModal, styles}
 
 export default withStyles(styles)(CreateModal);

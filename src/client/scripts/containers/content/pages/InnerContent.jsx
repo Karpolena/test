@@ -30,10 +30,19 @@ class InnerContent extends Component {
     }
 
     renderActionPanel = () => {
+        let element = null;
+        if (this.props.selectElement) {
+            if (this.props.selectElement.type === TYPE.FOLDER) {
+                element = this.props.folders.get(this.props.selectElement.id);
+            } else {
+                element = this.props.files.get(this.props.selectElement.id);
+            }
+        }
         return (
             <ActionPanelSection
                 selectElement={this.props.selectElement}
                 contextElement={this.props.contextElement}
+                element={element}
                 dispatch={this.props.dispatch}
             />
         );

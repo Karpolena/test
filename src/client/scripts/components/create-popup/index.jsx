@@ -11,6 +11,8 @@ import { connect } from "react-redux";
 import CreateModal from "./../modal/Create";
 import * as PopupActions from "./../../actions/Popup";
 import * as ModalActions from "./../../actions/Modal";
+import * as FileActions from "../../actions/File";
+import * as FolderActions from "../../actions/Folder";
 
 const styles = theme => ({
     root: {
@@ -31,8 +33,13 @@ class PageMenu extends Component {
                 <CreateModal
                     dispatch={this.props.dispatch}
                     title="Создание папки"
-                    onSubmit={() => {
-                        debugger
+                    onSubmit={data => {
+                        this.props.dispatch(
+                            FolderActions.createFolder({
+                                ...data,
+                                context: this.props.context
+                            })
+                        );
                     }}
                 />
             )
@@ -46,8 +53,13 @@ class PageMenu extends Component {
                 <CreateModal
                     dispatch={this.props.dispatch}
                     title="Создание файла"
-                    onSubmit={() => {
-                        debugger
+                    onSubmit={data => {
+                        this.props.dispatch(
+                            FileActions.createFile({
+                                ...data,
+                                context: this.props.context
+                            })
+                        );
                     }}
                 />
             )
@@ -78,7 +90,10 @@ class PageMenu extends Component {
 
 PageMenu.propTypes = {
     classes: PropTypes.object.isRequired,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    context: PropTypes.string
 };
 
-export default withStyles(styles)(connect(null)(PageMenu));
+export default withStyles(styles)(
+    connect(({ pageStore }) => ({ context: pageStore.context }))(PageMenu)
+);

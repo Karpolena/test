@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import * as FolderActions from "../../../../actions/Folder";
 import * as FileActions from "../../../../actions/File";
 import * as ModalActions from "../../../../actions/Modal";
+import UpdateModal from "./../../../../components/modal/Update";
 
 import { TYPE } from "./../../../../constants/Page";
 
@@ -21,8 +22,50 @@ class ActionPanelSection extends Component {
     };
 
     updateHandler = () => {
-        /* this.props.dispatch(ModalActions.openModalCreate());
-        this.props.dispatch(ModalActions.setModeUpdate()); */
+        if (!this.props.selectElement) return;
+        let element = this.props.element || {
+            title: "",
+            descriptions: ""
+        };
+
+        if (this.props.selectElement.type === TYPE.FOLDER) {
+            return this.props.dispatch(
+                ModalActions.open(
+                    <UpdateModal
+                        title="Обновление папки"
+                        element={element}
+                        onSubmit={data => {
+                            this.props.dispatch(
+                                FolderActions.updateFolder(
+                                    data,
+                                    this.props.selectElement.id
+                                )
+                            );
+                        }}
+                        dispatch={this.props.dispatch}
+                        submitText="Сохранить"
+                    />
+                )
+            );
+        }
+        this.props.dispatch(
+            ModalActions.open(
+                <UpdateModal
+                    title="Обновление файла"
+                    element={element}
+                    onSubmit={data => {
+                        this.props.dispatch(
+                            FileActions.updateFile(
+                                data,
+                                this.props.selectElement.id
+                            )
+                        );
+                    }}
+                    dispatch={this.props.dispatch}
+                    submitText="Сохранить"
+                />
+            )
+        );
     };
 
     renderUpdateButton = () => {
@@ -74,7 +117,8 @@ class ActionPanelSection extends Component {
 ActionPanelSection.propTypes = {
     selectElement: PropTypes.object,
     contextElement: PropTypes.object,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    element: PropTypes.object
 };
 
 export default ActionPanelSection;

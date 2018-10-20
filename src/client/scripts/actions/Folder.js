@@ -1,6 +1,5 @@
 import axios from "axios";
 import { FOLDER_CONSTANTS } from "../constants/Folder";
-import * as ModalActions from "./Modal";
 
 export const createFolder = folder => dispatch => {
     axios
@@ -12,22 +11,19 @@ export const createFolder = folder => dispatch => {
             });
         })
         .catch(error => console.log(error));
-    dispatch(ModalActions.closeModal());
 };
-
 
 export const removeFolder = id => dispatch => {
     axios
-    .delete("api/remove-folder/" + id)
-    .then(response => {
-        dispatch({
-            type: FOLDER_CONSTANTS.REMOVE_FOLDER,
-            payload: response.data
-        });
-        console.log(response)
-    })
-    .catch(error => console.log(error));
-}
+        .delete("api/remove-folder/" + id)
+        .then(response => {
+            dispatch({
+                type: FOLDER_CONSTANTS.REMOVE_FOLDER,
+                payload: response.data
+            });
+        })
+        .catch(error => console.log(error));
+};
 
 export const updateFolder = (folder, id) => dispatch => {
     axios
@@ -39,7 +35,4 @@ export const updateFolder = (folder, id) => dispatch => {
             });
         })
         .catch(error => console.log(error));
-    dispatch(ModalActions.closeModal());
 };
-
-
