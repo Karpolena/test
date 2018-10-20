@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import * as FileActions from "../actions/File";
-import * as FolderActions from "../actions/Folder";
 
-class ModalCreate extends Component {
+import Button from "@material-ui/core/Button";
+import * as FileActions from "../../actions/File";
+import * as FolderActions from "../../actions/Folder";
+
+class Create extends Component {
     state = {
         title: "",
         descriptions: ""
@@ -93,41 +92,32 @@ class ModalCreate extends Component {
 
     render() {
         return (
-            <div>
-                <Card
-                    className="modal create"
-                    style={{ display: this.props.show ? "block" : "none" }}
-                >
-                    <CardContent>
-                        <form className="form" /* onSubmit={this.onSubmit}*/>
-                            <label>Title</label>
-                            <input
-                                className="form__input"
-                                type="text"
-                                name="title"
-                                placeholder="title"
-                                value={this.state.title}
-                                onChange={this.handleInputChange}
-                            />
-                            <label>Descriptions</label>
-                            <input
-                                className="form__input"
-                                type="text"
-                                name="descriptions"
-                                placeholder="descriptions"
-                                value={this.state.descriptions}
-                                onChange={this.handleInputChange}
-                            />
-                            {this.renderButton()}
-                        </form>
-                    </CardContent>
-                </Card>
-            </div>
+            <form className="form" /* onSubmit={this.onSubmit}*/>
+                <label>Title</label>
+                <input
+                    className="form__input"
+                    type="text"
+                    name="title"
+                    placeholder="title"
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                />
+                <label>Descriptions</label>
+                <input
+                    className="form__input"
+                    type="text"
+                    name="descriptions"
+                    placeholder="descriptions"
+                    value={this.state.descriptions}
+                    onChange={this.handleInputChange}
+                />
+                {this.renderButton()}
+            </form>
         );
     }
 }
 
-ModalCreate.propTypes = {
+Create.propTypes = {
     openCreate: PropTypes.bool,
     show: PropTypes.bool,
     folderType: PropTypes.bool,
@@ -161,4 +151,4 @@ export default connect(
         updateFolder: FolderActions.updateFolder,
         updateFile: FileActions.updateFile
     }
-)(ModalCreate);
+)(Create);

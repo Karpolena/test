@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import * as ActiveActions from "../../../../actions/Active";
 
-import FolderCard from "../../../../components/FolderCard";
+import FolderCard from "../../../../components/card/FolderCard";
 
 class FoldersSection extends Component {
     renderFolders = folders => {
@@ -13,7 +13,7 @@ class FoldersSection extends Component {
                     key={itm.id}
                     folder={itm}
                     clicked={id => this.props.dispatch(ActiveActions.setActiveFolder(id))}
-                    style={this.props.activeFolder === itm.id}
+                    style={this.props.selectElement && this.props.selectElement.id === itm.id}
                 />
             );
         });
@@ -35,7 +35,7 @@ class FoldersSection extends Component {
 
 FoldersSection.propTypes = {
     folders: PropTypes.object,
-    activeFolder: PropTypes.string,
+    selectElement: PropTypes.object,
     dispatch: PropTypes.func
 };
 

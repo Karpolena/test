@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import * as ActiveActions from "../../../../actions/Active";
 
-import FileCard from "../../../../components/FileCard";
+import FileCard from "../../../../components/card/FileCard";
 
 class FilesSection extends Component {
     renderFiles = folders => {
@@ -13,7 +13,7 @@ class FilesSection extends Component {
                     key={itm.id}
                     file={itm}
                     clicked={id => this.props.dispatch(ActiveActions.setActiveFile(id))}
-                    style={this.props.activeFile === itm.id}
+                    style={this.props.selectElement && this.props.selectElement.id === itm.id}
                 />
             );
         });
@@ -35,7 +35,7 @@ class FilesSection extends Component {
 
 FilesSection.propTypes = {
     files: PropTypes.object,
-    activeFile: PropTypes.string,
+    selectElement: PropTypes.object,
     dispatch: PropTypes.func
 };
 

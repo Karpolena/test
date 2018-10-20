@@ -246,6 +246,7 @@ svg {
     height: 50px; 
     margin: 10px;
     float: left;
+    border: 1px solid transparent;
     &:hover {
         background-color: $light;
     }

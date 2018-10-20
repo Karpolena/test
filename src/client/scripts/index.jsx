@@ -8,9 +8,6 @@ import App from "./App";
 import "./../scss/main.scss"
 import store from "./store";
 
-
-
-
 render (
     <Provider store={store}>
         <HashRouter>

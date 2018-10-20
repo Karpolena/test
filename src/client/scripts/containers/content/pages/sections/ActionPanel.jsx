@@ -5,25 +5,30 @@ import * as FolderActions from "../../../../actions/Folder";
 import * as FileActions from "../../../../actions/File";
 import * as ModalActions from "../../../../actions/Modal";
 
+import { TYPE } from "./../../../../constants/Page";
+
 class ActionPanelSection extends Component {
     removeHandler = () => {
-        this.props.activeFolder 
-        ? 
-        this.props.dispatch(FolderActions.removeFolder(this.props.activeFolder))
-        :
-        this.props.dispatch(FileActions.removeFile(this.props.activeFile)) 
+        if (!this.props.selectElement) return;
+        if (this.props.selectElement.type === TYPE.FOLDER) {
+            return this.props.dispatch(
+                FolderActions.removeFolder(this.props.selectElement.id)
+            );
+        }
+        this.props.dispatch(
+            FileActions.removeFile(this.props.selectElement.id)
+        );
     };
 
     updateHandler = () => {
-        this.props.dispatch(ModalActions.openModalCreate());
-        this.props.dispatch(ModalActions.setModeUpdate());
-    }
-    
+        /* this.props.dispatch(ModalActions.openModalCreate());
+        this.props.dispatch(ModalActions.setModeUpdate()); */
+    };
+
     renderUpdateButton = () => {
         return (
             <li title="Редактировать">
-                <button className="nav-tools__btn"
-                onClick={this.updateHandler}>
+                <button className="nav-tools__btn" onClick={this.updateHandler}>
                     <i className="icon fas fa-edit" />
                 </button>
             </li>
@@ -42,7 +47,7 @@ class ActionPanelSection extends Component {
 
     render() {
         let className = ["nav"];
-        if (!this.props.activeFile && !this.props.activeFolder) {
+        if (!this.props.selectElement) {
             className.push("none");
         }
         let title = "";
@@ -67,8 +72,7 @@ class ActionPanelSection extends Component {
 }
 
 ActionPanelSection.propTypes = {
-    activeFile: PropTypes.string,
-    activeFolder: PropTypes.string,
+    selectElement: PropTypes.object,
     contextElement: PropTypes.object,
     dispatch: PropTypes.func
 };

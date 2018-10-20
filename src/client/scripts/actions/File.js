@@ -29,6 +29,7 @@ export const removeFile = id => dispatch => {
 }
 
 export const updateFile = ( file, id ) => dispatch => {
+    debugger
     axios
         .put("api/update-file/" + id, file)
         .then(response => {

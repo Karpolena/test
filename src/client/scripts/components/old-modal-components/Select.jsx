@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 
 import Button from "@material-ui/core/Button";
-import * as ModalActions from "../actions/Modal";
+import * as ModalActions from "../../actions/Modal";
 
 const Select = (props) => {
     

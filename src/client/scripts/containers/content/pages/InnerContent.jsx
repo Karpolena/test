@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import * as PageActions from "../../../actions/Page";
-import * as ActiveActions from "../../../actions/Active";
 import { TYPE } from "./../../../constants/Page";
 
 import ActionPanelSection from "./sections/ActionPanel";
@@ -13,23 +12,27 @@ import FilesSection from "./sections/Files";
 class InnerContent extends Component {
     componentDidMount() {
         let { match, dispatch } = this.props;
-        dispatch(ActiveActions.removeActive());
-        dispatch(PageActions.getPage({ type: TYPE.FOLDER, context: match.params.id }));
+        dispatch(
+            PageActions.getPage({ type: TYPE.FOLDER, context: match.params.id })
+        );
     }
 
     componentWillReceiveProps(props) {
         let { match, dispatch } = props;
         if (this.props.match.params.id !== match.params.id) {
-            dispatch(ActiveActions.removeActive());
-            dispatch(PageActions.getPage({ type: TYPE.FOLDER, context: match.params.id }));
+            dispatch(
+                PageActions.getPage({
+                    type: TYPE.FOLDER,
+                    context: match.params.id
+                })
+            );
         }
     }
 
     renderActionPanel = () => {
         return (
             <ActionPanelSection
-                activeFile={this.props.activeFile}
-                activeFolder={this.props.activeFolder}
+                selectElement={this.props.selectElement}
                 contextElement={this.props.contextElement}
                 dispatch={this.props.dispatch}
             />
@@ -39,7 +42,7 @@ class InnerContent extends Component {
         return (
             <FoldersSection
                 folders={this.props.folders}
-                activeFolder={this.props.activeFolder}
+                selectElement={this.props.selectElement}
                 dispatch={this.props.dispatch}
             />
         );
@@ -48,7 +51,7 @@ class InnerContent extends Component {
         return (
             <FilesSection
                 files={this.props.files}
-                activeFile={this.props.activeFile}
+                selectElement={this.props.selectElement}
                 dispatch={this.props.dispatch}
             />
         );
@@ -57,16 +60,12 @@ class InnerContent extends Component {
     renderFetchingBlock = () => {
         let { fetching, folders, files } = this.props;
 
-        if(fetching) {
-            return (
-                <div>Загрузка...</div>
-            )
-        } 
+        if (fetching) {
+            return <div>Загрузка...</div>;
+        }
 
-        if(!folders.size && !files.size) {
-            return (
-                <div>Нет данных</div>
-            )
+        if (!folders.size && !files.size) {
+            return <div>Нет данных</div>;
         }
         return null;
     };
@@ -83,15 +82,19 @@ class InnerContent extends Component {
     }
 }
 
-const mapStateToProps = ({ pageStore, activeStore, folderStore, fileStore }) => {
+const mapStateToProps = ({
+    pageStore,
+    activeStore,
+    folderStore,
+    fileStore
+}) => {
     return {
         folder: folderStore.folder,
         folders: folderStore.folders,
         files: fileStore.files,
         context: pageStore.context,
         fetching: pageStore.fetching,
-        activeFile: activeStore.activeFile,
-        activeFolder: activeStore.activeFolder,
+        selectElement: activeStore.selectElement,
         contextElement: pageStore.contextElement
     };
 };
@@ -105,8 +108,7 @@ InnerContent.propTypes = {
     match: PropTypes.object,
     history: PropTypes.object,
     fetching: PropTypes.bool,
-    activeFile: PropTypes.string,
-    activeFolder: PropTypes.string,
+    selectElement: PropTypes.object,
     contextElement: PropTypes.object
 };
 

@@ -1,8 +1,19 @@
 import { MODAL } from "../constants/Modal";
 
+export const open = component => {
+    return {
+        type: MODAL.OPEN_MODAL,
+        payload: component
+    };
+};
 
+export const close = () => {
+    return {
+        type: MODAL.CLOSE_MODAL
+    };
+};
 
-export const openModalSelect = () => {
+/* export const openModalSelect = () => {
     return {
         type: MODAL.OPEN_MODAL_SELECT
     }
@@ -36,4 +47,4 @@ export const setModeUpdate = () => {
     return {
         type: MODAL.SET_MODE_UPDATE
     }
-}
+} */
