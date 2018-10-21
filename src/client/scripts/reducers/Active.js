@@ -29,6 +29,7 @@ const reducer = (state = active.getState(), action) => {
             active.setElement(action.payload);
             break;
         case ACTIVE.REMOVE_ACTIVE:
+        
         case PAGE_CONSTANTS.FETCHING_PAGE:
             active.removeElement();
             break;

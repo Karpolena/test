@@ -4,20 +4,58 @@ import PropTypes from "prop-types";
 import * as FolderActions from "../../../../actions/Folder";
 import * as FileActions from "../../../../actions/File";
 import * as ModalActions from "../../../../actions/Modal";
-import UpdateModal from "./../../../../components/modal/Update";
+import UpdateModal from "./../../../../components/forms/Update";
+import RemoveModal from "./../../../../components/forms/Remove";
 
 import { TYPE } from "./../../../../constants/Page";
 
 class ActionPanelSection extends Component {
+    // removeHandler = () => {
+    //     if (!this.props.selectElement) return;
+    //     if (this.props.selectElement.type === TYPE.FOLDER) {
+    //         return this.props.dispatch(
+    //             FolderActions.removeFolder(this.props.selectElement.id)
+    //         );
+    //     }
+    //     this.props.dispatch(
+    //         FileActions.removeFile(this.props.selectElement.id)
+    //     );
+    // };
     removeHandler = () => {
         if (!this.props.selectElement) return;
         if (this.props.selectElement.type === TYPE.FOLDER) {
             return this.props.dispatch(
-                FolderActions.removeFolder(this.props.selectElement.id)
+                ModalActions.open(
+                    <RemoveModal
+                        title="Вы действительно хотите удалить папку ?"
+                        onSubmit={() => {
+                            this.props.dispatch(
+                                FolderActions.removeFolder(
+                                    this.props.selectElement.id
+                                )
+                            );
+                        }}
+                        dispatch={this.props.dispatch}
+                        submitText="Отменить"
+                    />
+                )
             );
         }
         this.props.dispatch(
-            FileActions.removeFile(this.props.selectElement.id)
+            ModalActions.open(
+                <RemoveModal
+                    title="Вы действительно хотите удалить файл ?"
+                    onSubmit={() => {
+                        this.props.dispatch(
+                            FileActions.removeFile(
+                                this.props.selectElement.id
+                            )
+                        );
+                    }}
+                    dispatch={this.props.dispatch}
+                    submitText="Отменить"
+                />
+            )
         );
     };
 

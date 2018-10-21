@@ -8,7 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Folder from "@material-ui/icons/CreateNewFolder";
 import File from "@material-ui/icons/NoteAdd";
 import { connect } from "react-redux";
-import CreateModal from "./../modal/Create";
+import CreateModal from "./../forms/Create";
 import * as PopupActions from "./../../actions/Popup";
 import * as ModalActions from "./../../actions/Modal";
 import * as FileActions from "../../actions/File";

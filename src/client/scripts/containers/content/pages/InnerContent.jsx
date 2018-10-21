@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import * as PageActions from "../../../actions/Page";
+import * as ActiveActions from "../../../actions/Active";
 import { TYPE } from "./../../../constants/Page";
 
 import ActionPanelSection from "./sections/ActionPanel";
@@ -27,6 +28,8 @@ class InnerContent extends Component {
                 })
             );
         }
+
+        
     }
 
     renderActionPanel = () => {
@@ -77,15 +80,23 @@ class InnerContent extends Component {
             return <div>Нет данных</div>;
         }
         return null;
+        
+
     };
+    // removeActiveElement = () => {
+    //
+    // }
 
     render() {
         return (
-            <div className="home">
+            <div className="home"
+                onClick={this.removeActiveElement }
+            >
                 {this.renderActionPanel()}
                 {this.renderFolders()}
                 {this.renderFiles()}
                 {this.renderFetchingBlock()}
+                
             </div>
         );
     }
