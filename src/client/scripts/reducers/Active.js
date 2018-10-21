@@ -1,5 +1,7 @@
 import { ACTIVE } from "../constants/Active";
 import PAGE_CONSTANTS from "./../constants/Page";
+import {FILE_CONSTANTS} from "./../constants/File";
+import {FOLDER_CONSTANTS} from "./../constants/Folder";
 
 class Active {
     constructor() {
@@ -29,8 +31,9 @@ const reducer = (state = active.getState(), action) => {
             active.setElement(action.payload);
             break;
         case ACTIVE.REMOVE_ACTIVE:
-        
         case PAGE_CONSTANTS.FETCHING_PAGE:
+        case FILE_CONSTANTS.REMOVE_FILE:
+        case FOLDER_CONSTANTS.REMOVE_FOLDER:
             active.removeElement();
             break;
         default:

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import * as PageActions from "../../../actions/Page";
-import * as ActiveActions from "../../../actions/Active";
+/* import * as ActiveActions from "../../../actions/Active"; */
 import { TYPE } from "./../../../constants/Page";
 
 import ActionPanelSection from "./sections/ActionPanel";
@@ -28,8 +28,6 @@ class InnerContent extends Component {
                 })
             );
         }
-
-        
     }
 
     renderActionPanel = () => {
