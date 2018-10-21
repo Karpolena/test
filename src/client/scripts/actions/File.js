@@ -1,14 +1,16 @@
 import axios from "axios";
 import { FILE_CONSTANTS } from "../constants/File";
+import { push } from "react-router-redux";
 
 export const createFile = file => dispatch => {
     axios
         .post("api/create-file", file)
         .then(response => {
-            dispatch({
+            /* dispatch({
                 type: FILE_CONSTANTS.CREATE_FILE,
                 payload: response.data
-            });
+            }); */
+            dispatch(push(`/file/${response.data.id}`));
         })
         .catch(error => console.log(error));
 };

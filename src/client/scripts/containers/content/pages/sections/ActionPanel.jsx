@@ -10,17 +10,12 @@ import RemoveModal from "./../../../../components/forms/Remove";
 import { TYPE } from "./../../../../constants/Page";
 
 class ActionPanelSection extends Component {
-    // removeHandler = () => {
-    //     if (!this.props.selectElement) return;
-    //     if (this.props.selectElement.type === TYPE.FOLDER) {
-    //         return this.props.dispatch(
-    //             FolderActions.removeFolder(this.props.selectElement.id)
-    //         );
-    //     }
-    //     this.props.dispatch(
-    //         FileActions.removeFile(this.props.selectElement.id)
-    //     );
-    // };
+
+    componentDidMount() {
+        //this.element.style.color = "red";
+        //this.element.focus()
+    }
+
     removeHandler = () => {
         if (!this.props.selectElement) return;
         if (this.props.selectElement.type === TYPE.FOLDER) {
@@ -136,7 +131,9 @@ class ActionPanelSection extends Component {
             title = this.props.contextElement.title;
         }
         return (
-            <header className="header line">
+            <header className="header line" ref={(element) => {
+                this.element = element;
+            }}>
                 <div className="header-left">
                     <p>Мой диск</p>
                     <p>{title}</p>

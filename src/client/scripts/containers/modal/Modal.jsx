@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { createPortal } from "react-dom";
+/* import { createPortal } from "react-dom"; */
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -9,7 +9,7 @@ import * as ModalActions from "./../../actions/Modal";
 class Modal extends PureComponent {
     constructor() {
         super();
-        this.domNode = document.getElementById("modal");
+        /*  this.domNode = document.getElementById("modal"); */
     }
 
     renderContent = () => {
@@ -29,7 +29,8 @@ class Modal extends PureComponent {
     };
 
     render() {
-        return createPortal(this.renderContent(), this.domNode);
+        //return createPortal(this.renderContent(), this.domNode);
+        return this.renderContent();
     }
 }
 
