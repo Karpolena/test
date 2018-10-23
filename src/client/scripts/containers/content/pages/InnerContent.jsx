@@ -81,15 +81,9 @@ class InnerContent extends Component {
         
 
     };
-    // removeActiveElement = () => {
-    //
-    // }
-
     render() {
         return (
-            <div className="home"
-                onClick={this.removeActiveElement }
-            >
+            <div className="home">
                 {this.renderActionPanel()}
                 {this.renderFolders()}
                 {this.renderFiles()}
