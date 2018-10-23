@@ -9,6 +9,7 @@ import { TYPE } from "./../../../constants/Page";
 import ActionPanelSection from "./sections/ActionPanel";
 import FoldersSection from "./sections/Folders";
 import FilesSection from "./sections/Files";
+import Spinner from "../../../components/spinner/Spinner";
 
 class InnerContent extends Component {
     componentDidMount() {
@@ -71,11 +72,11 @@ class InnerContent extends Component {
         let { fetching, folders, files } = this.props;
 
         if (fetching) {
-            return <div>Загрузка...</div>;
+            return <Spinner/>;
         }
 
         if (!folders.size && !files.size) {
-            return <div>Нет данных</div>;
+            return <div className="message">Нет данных</div>;
         }
         return null;
         
