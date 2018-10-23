@@ -66,8 +66,7 @@ class ActionPanelSection extends Component {
                 ModalActions.open(
                     <UpdateModal
                         title="Обновление папки"
-                        element={element}
-                        onSubmit={data => {
+                        element={element}                   onSubmit={data => {
                             this.props.dispatch(
                                 FolderActions.updateFolder(
                                     data,

@@ -46,7 +46,7 @@ const RemoveModal = (props) => {
     );
 }
 RemoveModal.defaultProps = {
-    submitText: "Удалить"
+    submitText: "Oтменить"
 };
 RemoveModal.propTypes = {
     dispatch: PropTypes.func,

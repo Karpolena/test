@@ -19,7 +19,8 @@ const FileCard = props => {
             }}
             onDoubleClick={() => props.dispatch(push(`/file/${props.file.id}`))
             }
-            onContextMenu={e => {props.dispatch(PopupActions.open(e.currentTarget, <FileMenu
+            onContextMenu={e => {
+                props.dispatch(PopupActions.open(e.currentTarget, <FileMenu
                 file={props.file}
             />))}}
         >

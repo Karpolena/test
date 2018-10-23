@@ -7,12 +7,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Folder from "@material-ui/icons/CreateNewFolder";
+import File from "@material-ui/icons/NoteAdd";
 import { connect } from "react-redux";
 import CreateModal from "./../forms/Create";
 import UpdateModal from "./../forms/Update";
 import * as PopupActions from "./../../actions/Popup";
 import * as ModalActions from "./../../actions/Modal";
 import * as FolderActions from "../../actions/Folder";
+import * as FileActions from "../../actions/File";
 
 const styles = theme => ({
     root: {
@@ -58,7 +60,26 @@ class FolderMenu extends Component {
                         this.props.dispatch(
                             FolderActions.createFolder({
                                 ...data,
-                                context: this.props.context
+                                context: this.props.selectElement.id
+                            })
+                        );
+                    }}
+                />
+            )
+        );
+    };
+    openCreateFile = () => {
+        this.props.dispatch(PopupActions.close());
+        this.props.dispatch(
+            ModalActions.open(
+                <CreateModal
+                    dispatch={this.props.dispatch}
+                    title="Создание файла"
+                    onSubmit={data => {
+                        this.props.dispatch(
+                            FileActions.createFile({
+                                ...data,
+                                context: this.props.selectElement.id
                             })
                         );
                     }}
@@ -89,6 +110,12 @@ class FolderMenu extends Component {
                         </ListItemIcon>
                         <ListItemText primary="Создать папку" />
                     </ListItem>
+                    <ListItem button onClick={this.openCreateFile}>
+                        <ListItemIcon className={classes.icon}>
+                            <File />
+                        </ListItemIcon>
+                        <ListItemText primary="Создать файл" />
+                    </ListItem>
                     <ListItem button onClick={this.redirectFolder}>
                         <ListItemIcon className={classes.icon}>
                             <Folder />
@@ -105,11 +132,13 @@ FolderMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     dispatch: PropTypes.func,
     context: PropTypes.string,
-    folder: PropTypes.object
+    folder: PropTypes.object,
+    selectElement: PropTypes.object
 };
 
 export default withStyles(styles)(
-    connect(({ pageStore }) => ({ 
-        context: pageStore.context
+    connect(({ pageStore, activeStore }) => ({ 
+        context: pageStore.context,
+        selectElement: activeStore.selectElement
      }))(FolderMenu)
 );

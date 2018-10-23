@@ -20,7 +20,9 @@ const FolderCard = props => {
             onDoubleClick={() =>
                 props.dispatch(push(`/folder/${props.folder.id}`))
             }
-            onContextMenu={e => {props.dispatch(PopupActions.open(e.currentTarget, <FolderMenu
+            onContextMenu={e => {
+                props.clicked(props.folder.id);
+                props.dispatch(PopupActions.open(e.currentTarget, <FolderMenu
                 folder={props.folder}
             />))}}
         >

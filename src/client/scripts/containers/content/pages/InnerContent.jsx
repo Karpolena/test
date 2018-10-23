@@ -88,8 +88,7 @@ class InnerContent extends Component {
                 {this.renderActionPanel()}
                 {this.renderFolders()}
                 {this.renderFiles()}
-                {this.renderFetchingBlock()}
-                
+                {this.renderFetchingBlock()}                
             </div>
         );
     }

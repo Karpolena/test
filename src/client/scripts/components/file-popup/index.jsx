@@ -6,7 +6,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import File from "@material-ui/icons/CreateNewFolder";
+import File from "@material-ui/icons/NoteAdd";
 import { connect } from "react-redux";
 import CreateModal from "./../forms/Create";
 import UpdateModal from "./../forms/Update";

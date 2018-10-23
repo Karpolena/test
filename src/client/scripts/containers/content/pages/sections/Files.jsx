@@ -12,6 +12,7 @@ class FilesSection extends Component {
                 <FileCard
                     key={itm.id}
                     file={itm}
+                    selectElement={this.props.selectElement}
                     clicked={id => this.props.dispatch(ActiveActions.setActiveFile(id))}
                     style={this.props.selectElement && this.props.selectElement.id === itm.id}
                 />

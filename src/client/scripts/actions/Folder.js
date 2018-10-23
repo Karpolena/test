@@ -1,5 +1,6 @@
 import axios from "axios";
 import { FOLDER_CONSTANTS } from "../constants/Folder";
+import { push } from "react-router-redux";
 
 export const createFolder = folder => dispatch => {
     axios
@@ -9,6 +10,7 @@ export const createFolder = folder => dispatch => {
                 type: FOLDER_CONSTANTS.CREATE_FOLDER,
                 payload: response.data
             });
+            dispatch(push(`/folder/${response.data.id}`));
         })
         .catch(error => console.log(error));
 };
