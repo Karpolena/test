@@ -22,7 +22,8 @@ body {
     max-width: 1600px;
     margin: 0px auto;
     font: 0.9em $roboto;
-    color: $dark-grey;    
+    color: $dark-grey;
+    padding: 0 !important; 
 }
 button, input {
     border: none;

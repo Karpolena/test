@@ -8,7 +8,6 @@ import CardContent from "@material-ui/core/CardContent";
 import FileMenu from "../file-popup";
 import * as PopupActions from "../../actions/Popup";
 
-
 const FileCard = props => {
     return (
         <Card
@@ -17,12 +16,17 @@ const FileCard = props => {
                 e.stopPropagation();
                 props.clicked(props.file.id);
             }}
-            onDoubleClick={() => props.dispatch(push(`/file/${props.file.id}`))
-            }
+            onDoubleClick={() => props.dispatch(push(`/file/${props.file.id}`))}
             onContextMenu={e => {
-                props.dispatch(PopupActions.open(e.currentTarget, <FileMenu
-                file={props.file}
-            />))}}
+                e.preventDefault();
+                e.stopPropagation();
+                props.dispatch(
+                    PopupActions.open(
+                        e.currentTarget,
+                        <FileMenu file={props.file} />
+                    )
+                );
+            }}
         >
             <CardContent className="Card__content">
                 <i className="icon fas fa-file" />

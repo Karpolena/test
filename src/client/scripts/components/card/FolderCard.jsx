@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 
-
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import FolderMenu from "../folder-popup";
@@ -21,10 +20,16 @@ const FolderCard = props => {
                 props.dispatch(push(`/folder/${props.folder.id}`))
             }
             onContextMenu={e => {
+                e.preventDefault();
+                e.stopPropagation();
                 props.clicked(props.folder.id);
-                props.dispatch(PopupActions.open(e.currentTarget, <FolderMenu
-                folder={props.folder}
-            />))}}
+                props.dispatch(
+                    PopupActions.open(
+                        e.currentTarget,
+                        <FolderMenu folder={props.folder} />
+                    )
+                );
+            }}
         >
             <CardContent>
                 <i className="icon fas fa-folder" />
