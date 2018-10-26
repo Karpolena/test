@@ -119,8 +119,6 @@ class ActionPanelSection extends Component {
     };
 
     render() {
-        console.log(this.props.selectElement);
-
         let className = ["nav"];
         if (!this.props.selectElement) {
             className.push("none");
