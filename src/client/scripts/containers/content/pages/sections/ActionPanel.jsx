@@ -10,7 +10,6 @@ import RemoveModal from "./../../../../components/forms/Remove";
 import { TYPE } from "./../../../../constants/Page";
 
 class ActionPanelSection extends Component {
-
     componentDidMount() {
         //this.element.style.color = "red";
         //this.element.focus()
@@ -42,9 +41,7 @@ class ActionPanelSection extends Component {
                     title="Вы действительно хотите удалить файл ?"
                     onSubmit={() => {
                         this.props.dispatch(
-                            FileActions.removeFile(
-                                this.props.selectElement.id
-                            )
+                            FileActions.removeFile(this.props.selectElement.id)
                         );
                     }}
                     dispatch={this.props.dispatch}
@@ -66,7 +63,8 @@ class ActionPanelSection extends Component {
                 ModalActions.open(
                     <UpdateModal
                         title="Обновление папки"
-                        element={element}                   onSubmit={data => {
+                        element={element}
+                        onSubmit={data => {
                             this.props.dispatch(
                                 FolderActions.updateFolder(
                                     data,
@@ -121,6 +119,8 @@ class ActionPanelSection extends Component {
     };
 
     render() {
+        console.log(this.props.selectElement);
+
         let className = ["nav"];
         if (!this.props.selectElement) {
             className.push("none");
@@ -130,9 +130,15 @@ class ActionPanelSection extends Component {
             title = this.props.contextElement.title;
         }
         return (
-            <header className="header line" ref={(element) => {
-                this.element = element;
-            }}>
+            <header
+                className="header line"
+                ref={element => {
+                    this.element = element;
+                }}
+                onClick={e => {
+                    e.stopPropagation();
+                }}
+            >
                 <div className="header-left">
                     <p>Мой диск</p>
                     <p>{title}</p>
